@@ -1,0 +1,58 @@
+.app-prose-scope {
+  h1 {
+    @extend %kbrinl-heading-xl;
+  }
+
+  h2 {
+    @extend %kbrinl-heading-l;
+  }
+
+  h3 {
+    @extend %kbrinl-heading-m;
+  }
+
+  h4 {
+    @extend %kbrinl-heading-s;
+  }
+
+  p {
+    @extend %kbrinl-body-m;
+  }
+
+  strong,
+  b {
+    @include kbrinl-typography-weight-bold;
+  }
+
+  ul,
+  ol {
+    @extend %kbrinl-list;
+  }
+
+  ol {
+    @extend %kbrinl-list--number;
+  }
+
+  ul {
+    @extend %kbrinl-list--bullet;
+  }
+
+  a {
+    @extend %kbrinl-link;
+  }
+
+  hr {
+    @extend %kbrinl-section-break;
+    @extend %kbrinl-section-break--visible;
+    @extend %kbrinl-section-break--xl;
+  }
+
+  pre + h2 {
+    padding-top: kbrinl-spacing(4);
+  }
+
+  pre + h3,
+  pre + h4 {
+    padding-top: kbrinl-spacing(2);
+  }
+}

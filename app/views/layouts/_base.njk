@@ -1,0 +1,29 @@
+{% extends "_generic.njk" %}
+{% from "components/sub-navigation/macro.njk" import kbrinlSubNavigation-%}
+
+{% block main %}
+  <div id="main-content">
+    <div class="kbrinl-width-container {{ containerClasses }}">
+    {% block beforeContent %}{% endblock %}
+      <div class="kbrinl-main-wrapper">
+        <div class="kbrinl-grid-row">
+          <div class="kbrinl-grid-column-one-quarter">
+            {% if siblings %}
+              {{ kbrinlSubNavigation({
+                siblings: siblings
+              }) }}
+            {% endif %}
+          </div>
+          <main id="main-content" class="kbrinl-grid-column-five-eighths app-prose-scope" role="main">
+            {% if pageTitle %}
+              <h1>{{ pageTitle }}</h1>
+            {% endif %}
+            {% block content %}
+            {% endblock %}
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

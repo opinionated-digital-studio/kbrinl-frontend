@@ -1,0 +1,64 @@
+@import '../base';
+
+////
+/// @group objects/layout
+////
+
+// Example usage with Breadcrumbs, phase banners, back links:
+// <div class="kbrinl-width-container">
+//   <!-- Breadcrumbs, phase banners, back links are placed in here. -->
+//   <div class="kbrinl-main-wrapper">
+//       <!-- Wrapper for the main content of your page which applies padding
+//            to the top / bottom -->
+//   </div>
+// </div>
+//
+// Example usage without Breadcrumbs, phase banners, back links:
+// <div class="kbrinl-width-container">
+//   <div class="kbrinl-main-wrapper kbrinl-main-wrapper--l">
+//       <!-- Wrapper for the main content of your page which applies padding
+//            to the top / bottom -->
+//   </div>
+// </div>
+
+@mixin kbrinl-main-wrapper {
+  // In IE11 the `main` element can be used, but is not recognized  –
+  // meaning it's not defined in IE's default style sheet,
+  // so it uses CSS initial value, which is inline.
+  display: block;
+  padding-top: kbrinl-spacing(4);
+  padding-bottom: kbrinl-spacing(4);
+
+  @include kbrinl-media-query($from: tablet) {
+    // This spacing is manually adjusted to replicate the margin of
+    // kbrinl-heading-xl (50px) minus the spacing of back link and
+    // breadcrumbs (10px)
+    padding-top: kbrinl-spacing(7);
+    padding-bottom: kbrinl-spacing(7);
+  }
+}
+
+/// Use kbrinl-main-wrapper--l when you page does not have Breadcrumbs, phase
+/// banners or back links.
+///
+@mixin kbrinl-main-wrapper--l {
+  @include kbrinl-responsive-padding(8, 'top');
+}
+
+@include kbrinl-exports('kbrinl/objects/main-wrapper') {
+  .kbrinl-main-wrapper {
+    @include kbrinl-main-wrapper;
+  }
+
+  // Using the `.kbrinl-main-wrapper--auto-spacing` modifier should apply the
+  // correct spacing depending on whether there are any elements
+  // (such the back link, breadcrumbs or phase banner components) before the
+  // `.kbrinl-main-wrapper` in the `kbrinl-width-container`.
+  //
+  // If you need to control the spacing manually, use the
+  // `kbrinl-main-wrapper--l` modifier instead.
+  .kbrinl-main-wrapper--auto-spacing:first-child,
+  .kbrinl-main-wrapper--l {
+    @include kbrinl-main-wrapper--l;
+  }
+}

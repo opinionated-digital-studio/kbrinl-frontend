@@ -1,0 +1,20 @@
+{
+  "name": "kbrinl-frontend",
+  "version": "1.0.0",
+  "description": "A code repository to help build web services for the Embassy of the Republic of Indonesia in The Hague.",
+  "main": "kbrinl/all.js",
+  "sass": "kbrinl/all.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Opinionated Digital Studio",
+    "email": "mail@opinionated.nl"
+  },
+  "license": "MIT",
+    "keywords": [
+    "kbrinl",
+    "frontend",
+    "template"
+  ]
+}

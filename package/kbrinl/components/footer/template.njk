@@ -1,0 +1,53 @@
+<footer class="kbrinl-footer" role="contentinfo">
+  <div class="kbrinl-width-container">
+    <div class="kbrinl-footer__meta">
+      <div class="kbrinl-footer__meta-item kbrinl-footer__meta-item--tablet">
+        <a class="kbrinl-footer__logo kbrinl-footer__link" href="{{ params.homepageUrl | default('/') }}">
+        <span class="kbrinl-footer__logotype">
+          <img class="kbrinl-footer__logotype-bti" src="/assets/images/bti-color.png" alt="">
+        </span>
+        <span class="kbrinl-footer__logo-text">
+          The Embassy of <br/>
+          The Republic of Indonesia <br/>
+          in The Hague, the Netherlands
+        </span>
+        </a>
+      </div>
+      <div class="kbrinl-footer__meta-item kbrinl-footer__meta-item--grow">
+        {% if params.heading %}
+          <h2 class="kbrinl-footer__heading kbrinl-heading-m">About this site</h2>
+        {% endif %}
+        {% if params.navigation %}
+          <ul class="kbrinl-footer__inline-list">
+          {% for item in params.navigation %}
+            {% if item.text %}
+              <li class="kbrinl-footer__inline-list-item">
+                <a class="kbrinl-footer__link" href="{{ item.href | default('#') }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+                  {{ item.text }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          </ul>
+        {% endif %}
+        <div class="kbrinl-footer__copyright">
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" src="https://i.creativecommons.org/l/by/4.0/80x15.png" style="border-width:0"></a> <br/>
+          &#169; Indonesia.nl <br/>
+          Unless indicated otherwise, all content on this website is licensed for re-use under a <a class="kbrinl-footer__link" target="__blank" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0 International Licence</a>
+        </div>
+      </div>
+      <div class="kbrinl-footer__meta-item kbrinl-footer__meta-item--mobile">
+        <a class="kbrinl-footer__logo" href="">
+        <span class="kbrinl-footer__logotype">
+          <img class="kbrinl-footer__logotype-bti" src="/assets/images/bti-color.png" alt="">
+        </span>
+        <span class="kbrinl-footer__logo-text">
+          The Embassy of <br/>
+          The Republic of Indonesia <br/>
+          in The Hague, the Netherlands
+        </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,21 @@
+@import '../base';
+
+@import 'links';
+@import 'typography';
+
+@mixin kbrinl-global-styles {
+  a {
+    @extend %kbrinl-link;
+  }
+
+  p {
+    @extend %kbrinl-body-m;
+  }
+}
+
+@include kbrinl-exports('kbrinl/core/global-styles') {
+
+  @if $kbrinl-global-styles == true {
+    @include kbrinl-global-styles;
+  }
+}

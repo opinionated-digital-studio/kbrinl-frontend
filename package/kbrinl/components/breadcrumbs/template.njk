@@ -1,0 +1,24 @@
+{# Set classes for this component #}
+{%- set classNames = "kbrinl-breadcrumbs" -%}
+
+{% if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif -%}
+
+{% if params.collapseOnMobile %}
+  {% set classNames = classNames + " kbrinl-breadcrumbs--collapse-on-mobile" %}
+{% endif -%}
+
+<div class="{{classNames}}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <ol class="kbrinl-breadcrumbs__list">
+  {% for item in params.items %}
+    {% if item.href %}
+    <li class="kbrinl-breadcrumbs__list-item">
+      <a class="kbrinl-breadcrumbs__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.html | safe if item.html else item.text }}</a>
+    </li>
+    {% else %}
+    <li class="kbrinl-breadcrumbs__list-item" aria-current="page">{{ item.html | safe if item.html else item.text }}</li>
+    {% endif %}
+  {% endfor %}
+  </ol>
+</div>

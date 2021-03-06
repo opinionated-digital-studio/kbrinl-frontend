@@ -1,0 +1,9 @@
+<div class="kbrinl-top-bar">
+  <div class="kbrinl-width-container">
+    {%- if params.html -%}
+      {{ params.html | safe }}
+    {%- elif params.text -%}
+      <p class="kbrinl-top-bar__text">{{ params.text }}</p>
+    {%- endif -%}
+  </div>
+</div>

@@ -1,0 +1,162 @@
+@import '../helpers/colour';
+
+////
+/// @group settings/colours
+////
+
+// =========================================================
+// Generic
+// =========================================================
+
+/// Brand colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-brand-colour: kbrinl-colour('red');
+
+/// Text colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-text-colour: kbrinl-colour('black');
+
+/// Body background colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-body-background-colour: kbrinl-colour('white');
+
+/// Canvas background colour
+///
+/// Used by the footer component and template to give the illusion of a long
+/// footer.
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-canvas-background-colour: kbrinl-colour('light-grey');
+
+/// Body background colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-body-background-colour: kbrinl-colour('white');
+
+/// Text colour for print media
+///
+/// Use 'true black' to avoid printers using colour ink to print body text
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-print-text-colour: #000000;
+
+/// Secondary text colour
+///
+/// Used in for example 'muted' text and help text.
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-secondary-text-colour: kbrinl-colour('dark-grey');
+
+/// Focus colour
+///
+/// Used for outline (and background, where appropriate) when interactive
+/// elements (links, form controls) have keyboard focus.
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-focus-colour: kbrinl-colour('yellow');
+
+/// Focused text colour
+///
+/// Ensure that the contrast between the text and background colour passes
+/// WCAG Level AA contrast requirements.
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-focus-text-colour: kbrinl-colour('black');
+
+/// Error colour
+///
+/// Used to highlight error messages and form controls in an error state
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-error-colour: kbrinl-colour('red');
+
+/// Success colour
+///
+/// Used to highlight success messages and banners
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-success-colour: kbrinl-colour('green');
+
+/// Border colour
+///
+/// Used in for example borders, separators, rules and keylines.
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-border-colour: kbrinl-colour('mid-grey');
+
+/// Input border colour
+///
+/// Used for form inputs and controls
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-input-border-colour: kbrinl-colour('black');
+
+/// Input hover colour
+///
+/// Used for hover states on form controls
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-hover-colour: kbrinl-colour('mid-grey');
+
+// =============================================================================
+// Links
+// =============================================================================
+
+/// Link colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-link-colour: kbrinl-colour('red');
+
+/// Visited link colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-link-visited-colour: kbrinl-colour('turquoise');
+
+/// Link hover colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-link-hover-colour: kbrinl-colour('dark-red');
+
+/// Active link colour
+///
+/// @type Colour
+/// @access public
+
+$kbrinl-link-active-colour: kbrinl-colour('black');

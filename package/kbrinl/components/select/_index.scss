@@ -1,0 +1,43 @@
+@import '../error-message/index';
+@import '../hint/index';
+@import '../label/index';
+
+@include kbrinl-exports('kbrinl/component/select') {
+  .kbrinl-select {
+    @include kbrinl-font($size: 19, $line-height: 1.25);
+
+    box-sizing: border-box; // should this be global?
+    max-width: 100%;
+    height: 40px;
+    padding: kbrinl-spacing(1); // was 5px 4px 4px - size of it should be adjusted to match other form elements
+    border: $kbrinl-border-width-form-element solid $kbrinl-input-border-colour;
+    @if $kbrinl-typography-use-rem {
+      height: kbrinl-px-to-rem(40px);
+    }
+
+    &:focus {
+      outline: $kbrinl-focus-width solid $kbrinl-focus-colour;
+      // Ensure outline appears outside of the element
+      outline-offset: 0;
+      // Double the border by adding its width again. Use `box-shadow` to do
+      // this instead of changing `border-width` (which changes element size) and
+      // since `outline` is already used for the yellow focus state.
+      box-shadow: inset 0 0 0 $kbrinl-border-width-form-element;
+    }
+  }
+
+  .kbrinl-select option:active,
+  .kbrinl-select option:checked,
+  .kbrinl-select:focus::-ms-value {
+    color: kbrinl-colour('white');
+    background-color: kbrinl-colour('blue');
+  }
+
+  .kbrinl-select--error {
+    border: $kbrinl-border-width-form-element-error solid $kbrinl-error-colour;
+
+    &:focus {
+      border-color: $kbrinl-input-border-colour;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@include kbrinl-exports('kbrinl/utilities/visually-hidden') {
+  .kbrinl-visually-hidden {
+    @include kbrinl-visually-hidden;
+  }
+
+  .kbrinl-visually-hidden-focusable {
+    @include kbrinl-visually-hidden-focusable;
+  }
+}

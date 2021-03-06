@@ -1,0 +1,44 @@
+@include kbrinl-exports('kbrinl/component/hint') {
+  .kbrinl-hint {
+    @include kbrinl-font($size: 19);
+
+    display: block;
+
+    margin-bottom: kbrinl-spacing(3);
+
+    color: $kbrinl-secondary-text-colour;
+  }
+
+  // Reduces margin-bottom of hint when used after the default label (no class)
+  // or kbrinl-label--s for better vertical alignment.
+
+  // This adjustment will not work when the label is inside the <h1>, however it
+  // is unlikely that the default or kbrinl-label--s class would be used in this
+  // case.
+
+  // This adjustment will not work in browsers that do not support :not().
+  // Users with these browsers will see the default size margin (5px larger).
+
+  .kbrinl-label:not(.kbrinl-label--m):not(.kbrinl-label--l):not(.kbrinl-label--xl) + .kbrinl-hint {
+    margin-bottom: kbrinl-spacing(2);
+  }
+
+  // Reduces margin-bottom of hint when used after the default legend (no class)
+  // or kbrinl-fieldset__legend--s for better vertical alignment.
+
+  // This adjustment will not work when the legend is outside the <h1>, however
+  // it is unlikely that the default or kbrinl-fieldset__legend--s class would be
+  // used in this case.
+
+  // This adjustment will not work in browsers that do not support :not().
+  // Users with these browsers will see the default size margin (5px larger).
+
+  .kbrinl-fieldset__legend:not(.kbrinl-fieldset__legend--m):not(.kbrinl-fieldset__legend--l):not(.kbrinl-fieldset__legend--xl) + .kbrinl-hint {
+    margin-bottom: kbrinl-spacing(2);
+  }
+
+  // Reduces visual spacing of legend when there is a hint
+  .kbrinl-fieldset__legend + .kbrinl-hint {
+    margin-top: -(kbrinl-spacing(1));
+  }
+}

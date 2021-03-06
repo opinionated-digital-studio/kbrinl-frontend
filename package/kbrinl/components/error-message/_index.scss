@@ -1,0 +1,11 @@
+@include kbrinl-exports('kbrinl/component/error-message') {
+  .kbrinl-error-message {
+    @include kbrinl-font($size: 19, $weight: bold);
+
+    display: block;
+    margin-bottom: kbrinl-spacing(3);
+    clear: both;
+
+    color: $kbrinl-error-colour;
+  }
+}

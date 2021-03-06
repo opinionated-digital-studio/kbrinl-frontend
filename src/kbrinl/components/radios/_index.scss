@@ -1,0 +1,329 @@
+@import '../error-message/index';
+@import '../fieldset/index';
+@import '../hint/index';
+@import '../label/index';
+
+@include kbrinl-exports('kbrinl/component/radios') {
+
+  $kbrinl-touch-target-size: 44px;
+  $kbrinl-radios-size: 40px;
+  $kbrinl-small-radios-size: 24px;
+  $kbrinl-radios-label-padding-left-right: kbrinl-spacing(3);
+  // When the default focus width is used on a curved edge it looks visually smaller.
+  // So for the circular radios we bump the default to make it look visually consistent.
+  $kbrinl-radios-focus-width: $kbrinl-focus-width + 1px;
+
+  // =========================================================
+  // Conditional reveals
+  // =========================================================
+
+  // The narrow border is used in the conditional reveals because the border has
+  // to be an even number in order to be centred under the 40px checkbox or radio.
+  $conditional-border-width: $kbrinl-border-width-narrow;
+  // Calculate the amount of padding needed to keep the border centered against the radios.
+  $conditional-border-padding: ($kbrinl-radios-size / 2) - ($conditional-border-width / 2);
+  // Move the border centered with the radios
+  $conditional-margin-left: $conditional-border-padding;
+  // Move the contents of the conditional inline with the label
+  $conditional-padding-left: $conditional-border-padding + $kbrinl-radios-label-padding-left-right;
+
+  .kbrinl-radios__item {
+    @include kbrinl-font($size: 19);
+
+    display: block;
+    position: relative;
+
+    min-height: $kbrinl-radios-size;
+
+    margin-bottom: kbrinl-spacing(2);
+    padding-left: $kbrinl-radios-size;
+
+    clear: left;
+  }
+
+  .kbrinl-radios__item:last-child,
+  .kbrinl-radios__item:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .kbrinl-radios__input {
+    $input-offset: ($kbrinl-touch-target-size - $kbrinl-radios-size) / 2;
+
+    position: absolute;
+
+    z-index: 1;
+    top: $input-offset * -1;
+    left: $input-offset * -1;
+
+    width: $kbrinl-touch-target-size;
+    height: $kbrinl-touch-target-size;
+    margin: 0;
+
+    margin-top: 10px;
+    margin-right: $kbrinl-radios-size / -2;
+    margin-left: $kbrinl-radios-size / -2;
+    float: left;
+
+    opacity: 0;
+
+    cursor: pointer;
+
+    // add focus outline to input
+    &:focus {
+      outline: $kbrinl-focus-width solid $kbrinl-focus-colour;
+    }
+  }
+
+  .kbrinl-radios__label {
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 8px $kbrinl-radios-label-padding-left-right kbrinl-spacing(1);
+    cursor: pointer;
+    // remove 300ms pause on mobile
+    touch-action: manipulation;
+  }
+
+  // ( ) Radio ring
+  .kbrinl-radios__label:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: $kbrinl-radios-size;
+    height: $kbrinl-radios-size;
+
+    border: $kbrinl-border-width-form-element solid currentColor;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  //  •  Radio button
+  //
+  // We create the 'button' entirely out of 'border' so that they remain
+  // 'filled' even when colours are overridden in the browser.
+  .kbrinl-radios__label:after {
+    content: '';
+
+    position: absolute;
+    top: kbrinl-spacing(2);
+    left: kbrinl-spacing(2);
+
+    width: 0;
+    height: 0;
+
+    border: kbrinl-spacing(2) solid currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    background: currentColor;
+  }
+
+  .kbrinl-radios__hint {
+    display: block;
+    padding-right: $kbrinl-radios-label-padding-left-right;
+    padding-left: $kbrinl-radios-label-padding-left-right;
+  }
+
+  // Focused state
+  .kbrinl-radios__input:focus + .kbrinl-radios__label:before {
+    border-width: 4px;
+    box-shadow: 0 0 0 $kbrinl-radios-focus-width $kbrinl-focus-colour;
+  }
+
+  // Selected state
+  .kbrinl-radios__input:checked + .kbrinl-radios__label:after {
+    opacity: 1;
+  }
+
+  // Disabled state
+  .kbrinl-radios__input:disabled,
+  .kbrinl-radios__input:disabled + .kbrinl-radios__label {
+    cursor: default;
+  }
+
+  .kbrinl-radios__input:disabled + .kbrinl-radios__label {
+    opacity: .5;
+  }
+
+  // =========================================================
+  // Inline radios
+  // =========================================================
+
+  .kbrinl-radios--inline {
+    @include kbrinl-media-query ($from: tablet) {
+      @include kbrinl-clearfix;
+
+      .kbrinl-radios__item {
+        margin-right: kbrinl-spacing(4);
+        float: left;
+        clear: none;
+      }
+    }
+
+    // Prevent inline modifier being used with conditional reveals
+    &.kbrinl-radios--conditional {
+      .kbrinl-radios__item {
+        margin-right: 0;
+        float: none;
+      }
+    }
+  }
+
+  // =========================================================
+  // Dividers ('or')
+  // =========================================================
+
+  .kbrinl-radios__divider {
+    $kbrinl-divider-size: $kbrinl-radios-size !default;
+    @include kbrinl-font($size: 19);
+    @include kbrinl-text-colour;
+    width: $kbrinl-divider-size;
+    margin-bottom: kbrinl-spacing(2);
+    text-align: center;
+  }
+
+  .kbrinl-radios__conditional {
+    @include kbrinl-responsive-margin(4, 'bottom');
+    margin-left: $conditional-margin-left;
+    padding-left: $conditional-padding-left;
+    border-left: $conditional-border-width solid $kbrinl-border-colour;
+
+    .js-enabled &--hidden {
+      display: none;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // =========================================================
+  // Small checkboxes
+  // =========================================================
+
+  .kbrinl-radios--small {
+
+    $input-offset: ($kbrinl-touch-target-size - $kbrinl-small-radios-size) / 2;
+    $label-offset: $kbrinl-touch-target-size - $input-offset;
+
+    .kbrinl-radios__item {
+      @include kbrinl-clearfix;
+      min-height: 0;
+      margin-bottom: 0;
+      padding-left: $label-offset;
+      float: left;
+    }
+
+    // Shift the touch target into the left margin so that the visible edge of
+    // the control is aligned
+    //
+    //   ┆Which colour is your favourite?
+    //  ┌┆───┐
+    //  │┆() │ Purple
+    //  └┆▲──┘
+    //  ▲┆└─ Radio pseudo element, aligned with margin
+    //  └─── Touch target (invisible input), shifted into the margin
+    .kbrinl-radios__input {
+      left: $input-offset * -1;
+    }
+
+    // Adjust the size and position of the label.
+    //
+    // Unlike larger radios, we also have to float the label in order to
+    // 'shrink' it, preventing the hover state from kicking in across the full
+    // width of the parent element.
+    .kbrinl-radios__label {
+      margin-top: -2px;
+      padding: 13px kbrinl-spacing(3) 13px 1px;
+      float: left;
+
+      @include kbrinl-media-query($from: tablet) {
+        padding: 11px kbrinl-spacing(3) 10px 1px;
+      }
+    }
+
+    // ( ) Radio ring
+    //
+    // Reduce the size of the control [1], vertically centering it within the
+    // touch target [2]
+    .kbrinl-radios__label:before {
+      top: $input-offset - $kbrinl-border-width-form-element; // 2
+      width: $kbrinl-small-radios-size; // 1
+      height: $kbrinl-small-radios-size; // 1
+    }
+
+    //  •  Radio button
+    //
+    // Reduce the size of the 'button' and center it within the ring
+    .kbrinl-radios__label:after {
+      top: 15px;
+      left: 7px;
+      border-width: 5px;
+    }
+
+    // Fix position of hint with small radios
+    //
+    // Do not use hints with small radios – because they're within the input
+    // wrapper they trigger the hover state, but clicking them doesn't actually
+    // activate the control.
+    //
+    // (If you do use them, they won't look completely broken... but seriously,
+    // don't use them)
+    .kbrinl-radios__hint {
+      padding: 0;
+      clear: both;
+      pointer-events: none;
+    }
+
+    // Align conditional reveals with small radios
+    .kbrinl-radios__conditional {
+      $margin-left: ($kbrinl-small-radios-size / 2) - ($conditional-border-width / 2);
+      margin-left: $margin-left;
+      padding-left: $label-offset - ($margin-left + $conditional-border-width);
+      clear: both;
+    }
+
+    .kbrinl-radios__divider {
+      width: $kbrinl-small-radios-size;
+      margin-bottom: kbrinl-spacing(1);
+    }
+
+    // Hover state for small radios.
+    //
+    // We use a hover state for small radios because the touch target size
+    // is so much larger than their visible size, and so we need to provide
+    // feedback to the user as to which radio they will select when their
+    // cursor is outside of the visible area.
+    .kbrinl-radios__item:hover .kbrinl-radios__input:not(:disabled) + .kbrinl-radios__label:before {
+      box-shadow: 0 0 0 $kbrinl-hover-width $kbrinl-hover-colour;
+    }
+
+    // Because we've overridden the border-shadow provided by the focus state,
+    // we need to redefine that too.
+    //
+    // We use two box shadows, one that restores the original focus state [1]
+    // and another that then applies the hover state [2].
+    .kbrinl-radios__item:hover .kbrinl-radios__input:focus + .kbrinl-radios__label:before {
+      box-shadow:
+        0 0 0 $kbrinl-radios-focus-width $kbrinl-focus-colour, // 1
+        0 0 0 $kbrinl-hover-width        $kbrinl-hover-colour; // 2
+    }
+
+    // For devices that explicitly don't support hover, don't provide a hover
+    // state (e.g. on touch devices like iOS).
+    //
+    // We can't use `@media (hover: hover)` because we wouldn't get the hover
+    // state in browsers that don't support `@media (hover)` (like Internet
+    // Explorer) – so we have to 'undo' the hover state instead.
+    @media (hover: none), (pointer: coarse) {
+      .kbrinl-radios__item:hover .kbrinl-radios__input:not(:disabled) + .kbrinl-radios__label:before {
+        box-shadow: initial;
+      }
+
+      .kbrinl-radios__item:hover .kbrinl-radios__input:focus + .kbrinl-radios__label:before {
+        box-shadow: 0 0 0 $kbrinl-radios-focus-width $kbrinl-focus-colour;
+      }
+    }
+  }
+}

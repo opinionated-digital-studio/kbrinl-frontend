@@ -1,0 +1,7 @@
+<nav>
+  <ul class="kbrinl-sub-navigation">
+  {% for sibling in params.siblings %}
+    <li class="kbrinl-sub-navigation__item{{ ' kbrinl-sub-navigation__item--active' if sibling.active }}"><a class="kbrinl-sub-navigation__link" href="{{ sibling.href | default('#')}}">{{ sibling.pageTitle }}</a></li>
+  {% endfor %}
+  </ul>
+</nav>

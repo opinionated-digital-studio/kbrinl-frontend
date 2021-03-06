@@ -1,0 +1,21 @@
+{% from "components/breadcrumbs/macro.njk" import kbrinlBreadcrumbs %}
+{% extends '_base.njk' %}
+
+{% block beforeContent %}
+  {{ kbrinlBreadcrumbs({
+    "items": [
+    { text: 'KRINL Frontend', href: '/' },
+    { text: 'Components' }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <p>
+    You can use the individually reusable components to build patterns and user interfaces for a large range of applications.
+  </p>
+
+  <p>
+    The components demonstrated in this website contain code snippets in both HTML and Nunjucks which you can copy and modify to suit your own use case.
+  </p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "examples": {
+    "default": {
+      "summaryText": "Nationalities that require authorization",
+      "text": "Certain nationals have to undergo an authorization procedure via the Directorate General of Immigration in Jakarta."
+    },
+    "htmlExample": {
+      "summaryText": "Nationalities that require authorization",
+      "html": "If you are a national of one of the following countries, you have to undergo an authorization procedure via the Directorate General of Immigration in Jakarta. <a class='kbrinl-link' href='#'>More information</a><ul><li>Afghanistan</li><li>Cameroon</li><li>Guinea</li><li>Israel</li></ul>"
+    }
+  }
+}

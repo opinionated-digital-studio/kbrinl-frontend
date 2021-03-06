@@ -1,0 +1,188 @@
+@import '../base';
+
+@include kbrinl-exports('kbrinl/core/typography') {
+
+  // Headings
+
+  %kbrinl-heading-xl {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 48, $weight: bold);
+    @include kbrinl-responsive-margin(8, 'bottom');
+
+    display: block;
+
+    margin-top: 0;
+  }
+
+  .kbrinl-heading-xl {
+    @extend %kbrinl-heading-xl;
+  }
+
+  %kbrinl-heading-l {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 36, $weight: bold);
+    @include kbrinl-responsive-margin(6, 'bottom');
+
+    display: block;
+
+    margin-top: 0;
+  }
+
+  .kbrinl-heading-l {
+    @extend %kbrinl-heading-l;
+  }
+
+  %kbrinl-heading-m {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 24, $weight: bold);
+    @include kbrinl-responsive-margin(4, 'bottom');
+
+    display: block;
+
+    margin-top: 0;
+  }
+
+  .kbrinl-heading-m {
+    @extend %kbrinl-heading-m;
+  }
+
+  %kbrinl-heading-s {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 19, $weight: bold);
+    @include kbrinl-responsive-margin(4, 'bottom');
+
+    display: block;
+
+    margin-top: 0;
+  }
+
+  .kbrinl-heading-s {
+    @extend %kbrinl-heading-s;
+  }
+
+  // Captions to be used inside headings
+
+  .kbrinl-caption-xl {
+    @include kbrinl-font($size: 27);
+
+    display: block;
+
+    margin-bottom: kbrinl-spacing(1);
+
+    color: $kbrinl-secondary-text-colour;
+  }
+
+  .kbrinl-caption-l {
+    @include kbrinl-font($size: 24);
+
+    display: block;
+
+    margin-bottom: kbrinl-spacing(1);
+    color: $kbrinl-secondary-text-colour;
+
+    @include kbrinl-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  .kbrinl-caption-m {
+    @include kbrinl-font($size: 19);
+
+    display: block;
+
+    color: $kbrinl-secondary-text-colour;
+  }
+
+  // Body (paragraphs)
+
+  %kbrinl-body-l {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 24);
+    @include kbrinl-responsive-margin(6, 'bottom');
+
+    margin-top: 0;
+  }
+
+  .kbrinl-body-l {
+    @extend %kbrinl-body-l;
+  }
+
+  %kbrinl-body-m {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 19);
+    @include kbrinl-responsive-margin(4, 'bottom');
+
+    margin-top: 0;
+  }
+
+  .kbrinl-body-m {
+    @extend %kbrinl-body-m;
+  }
+
+  %kbrinl-body-s {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 16);
+    @include kbrinl-responsive-margin(4, 'bottom');
+
+    margin-top: 0;
+  }
+
+  .kbrinl-body-s {
+    @extend %kbrinl-body-s;
+  }
+
+  %kbrinl-body-xs {
+    @include kbrinl-text-colour;
+    @include kbrinl-font($size: 14);
+    @include kbrinl-responsive-margin(4, 'bottom');
+
+    margin-top: 0;
+  }
+
+  .kbrinl-body-xs {
+    @extend %kbrinl-body-xs;
+  }
+
+  // Usage aliases
+
+  // Using extend to alias means we also inherit any contextual adjustments that
+  // refer to the 'original' class name
+
+  .kbrinl-body-lead {
+    @extend %kbrinl-body-l;
+  }
+
+  .kbrinl-body {
+    @extend %kbrinl-body-m;
+  }
+
+  // Contextual adjustments
+  // Add top padding to headings that appear directly after paragraphs.
+
+  %kbrinl-body-l  + %kbrinl-heading-l {
+    padding-top: kbrinl-spacing(1);
+
+    @include kbrinl-media-query($from: tablet) {
+      padding-top: kbrinl-spacing(2);
+    }
+  }
+
+  %kbrinl-body-m  + %kbrinl-heading-l,
+  %kbrinl-body-s  + %kbrinl-heading-l,
+  %kbrinl-list + %kbrinl-heading-l {
+    @include kbrinl-responsive-padding(4, 'top');
+  }
+
+  %kbrinl-body-m + %kbrinl-heading-m,
+  %kbrinl-body-s + %kbrinl-heading-m,
+  %kbrinl-list + %kbrinl-heading-m,
+  %kbrinl-body-m + %kbrinl-heading-s,
+  %kbrinl-body-s + %kbrinl-heading-s,
+  %kbrinl-list + %kbrinl-heading-s {
+    padding-top: kbrinl-spacing(1);
+
+    @include kbrinl-media-query($from: tablet) {
+      padding-top: kbrinl-spacing(2);
+    }
+  }
+}

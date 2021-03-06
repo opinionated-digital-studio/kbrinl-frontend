@@ -1,0 +1,36 @@
+params:
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the jumbotron.
+  - name: heading
+    type: string
+    required: true
+    description: The large text of a jumbotron
+  - name: descriptionHtml
+    type: string
+    required: true
+    description: Required if descriptionText is not supplied
+  - name: descriptionText
+    type: string
+    required: true
+    description: Required if descriptionHtml is not supplied
+  - name: buttons
+    type: array
+    required: false
+    description: Buttons for call to actions
+    params:
+      - name: text
+      - name: href
+      - name: isStartButton
+      - name: classes
+
+examples:
+  - name: default
+    data:
+      heading: 'Apply for a Visa to Indonesia'
+      descriptionText: 'You may need a visa to travel to Indonesia. Check if you need a visa or what visa type you need before applying.'
+      buttons:
+        - text: Use the visa checker
+          isStartButton: true
+          classes: kbrinl-button--inverted

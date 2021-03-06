@@ -1,0 +1,255 @@
+////
+/// @group helpers/links
+////
+
+/// Common link mixin
+///
+/// Provides the typography and focus state, regardless of link style.
+///
+/// @access public
+
+@mixin kbrinl-link-common {
+  @include kbrinl-typography-common;
+
+  &:focus {
+    @include kbrinl-focused-text;
+  }
+}
+
+/// Default link style mixin
+///
+/// Provides the default unvisited, visited, hover and active states for links.
+///
+/// If you use this mixin in a component you must also include the
+/// kbrinl-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .kbrinl-component__link {
+///     @include kbrinl-link-common;
+///     @include kbrinl-link-style-default;
+///   }
+///
+/// @access public
+
+@mixin kbrinl-link-style-default {
+  &:link {
+    color: $kbrinl-link-colour;
+  }
+
+  &:visited {
+    color: $kbrinl-link-visited-colour;
+  }
+
+  &:hover {
+    color: $kbrinl-link-hover-colour;
+  }
+
+  &:active {
+    color: $kbrinl-link-active-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $kbrinl-focus-text-colour;
+  }
+}
+
+/// Error link style mixin
+///
+/// Provides the error unvisited, visited, hover and active states for links.
+///
+/// If you use this mixin in a component you must also include the
+/// kbrinl-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .kbrinl-component__link {
+///     @include kbrinl-link-common;
+///     @include kbrinl-link-style-error;
+///   }
+///
+/// @access public
+
+@mixin kbrinl-link-style-error {
+  &:link,
+  &:visited {
+    color: $kbrinl-error-colour;
+  }
+
+  &:hover {
+    color: scale-color($kbrinl-error-colour, $lightness: -30%);
+  }
+
+  &:active {
+    color: $kbrinl-error-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $kbrinl-focus-text-colour;
+  }
+}
+
+/// Success link style mixn
+///
+/// Provides the success unvisited, visited, hover and active states for links.
+///
+/// If you use this mixin in a component you must also include the
+/// kbrinl-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .kbrinl-component__link {
+///     @include kbrinl-link-common;
+///     @include kbrinl-link-style-success;
+///   }
+///
+/// @access public
+
+@mixin kbrinl-link-style-success {
+  &:link,
+  &:visited {
+    color: $kbrinl-success-colour;
+  }
+
+  &:hover {
+    color: scale-color($kbrinl-success-colour, $lightness: -30%);
+  }
+
+  &:active {
+    color: $kbrinl-success-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $kbrinl-focus-text-colour;
+  }
+}
+
+/// Muted style link mixin
+///
+/// Used for secondary links on a page - the link will appear in muted colours
+/// regardless of visited state.
+///
+/// If you use this mixin in a component you must also include the
+/// kbrinl-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .kbrinl-component__link {
+///     @include kbrinl-link-common;
+///     @include kbrinl-link-style-muted;
+///   }
+///
+/// @access public
+
+@mixin kbrinl-link-style-muted {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $kbrinl-secondary-text-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $kbrinl-focus-text-colour;
+  }
+}
+
+/// Text style link mixin
+///
+/// Overrides the colour of links to match the text colour. Generally used by
+/// navigation components, such as breadcrumbs or the back link.
+///
+/// If you use this mixin in a component you must also include the
+/// kbrinl-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .kbrinl-component__link {
+///     @include kbrinl-link-common;
+///     @include kbrinl-link-style-text;
+///   }
+///
+/// @access public
+
+@mixin kbrinl-link-style-text {
+  // Override link colour to use text colour
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    @include kbrinl-text-colour;
+  }
+}
+
+/// No visited state link mixin
+///
+/// Used in cases where it is not helpful to distinguish between visited and
+/// non-visited links.
+///
+/// For example, navigation links to pages with dynamic content like admin
+/// dashboards. The content on the page is changing all the time, so the fact
+/// that you’ve visited it before is not important.
+///
+/// If you use this mixin in a component you must also include the
+/// kbrinl-link-common mixin in order to get the focus state.
+///
+/// @example scss
+///   .kbrinl-component__link {
+///     @include kbrinl-link-common;
+///     @include kbrinl-link-style-no-visited-state;
+///   }
+///
+/// @access public
+
+@mixin kbrinl-link-style-no-visited-state {
+  &:link {
+    color: $kbrinl-link-colour;
+  }
+
+  &:visited {
+    color: $kbrinl-link-colour;
+  }
+
+  &:hover {
+    color: $kbrinl-link-hover-colour;
+  }
+
+  &:active {
+    color: $kbrinl-link-active-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $kbrinl-focus-text-colour;
+  }
+}
+
+/// Print friendly link mixin
+///
+/// When printing, append the the destination URL to the link text, as long
+/// as the URL starts with either `/`, `http://` or `https://`.
+///
+/// @access public
+
+@mixin kbrinl-link-print-friendly {
+  @include kbrinl-media-query($media-type: print) {
+    &[href^='/'],
+    &[href^='http://'],
+    &[href^='https://'] {
+      &:after {
+        content: ' (' attr(href) ')';
+        font-size: 90%;
+
+        // Because the URLs may be very long, ensure that they may be broken
+        // at arbitrary points if there are no otherwise acceptable break
+        // points in the line
+        word-wrap: break-word;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+////
+/// @group settings/colours
+////
+
+/// Organisation colours
+///
+/// @type Map
+///
+/// @prop $organisation.colour - Colour for the given `$organisation`
+///
+/// @access public
+$kbrinl-colours-organisations: (
+  'kemlu': (
+    colour: #1a7d8e
+  )
+);

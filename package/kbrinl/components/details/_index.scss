@@ -1,0 +1,83 @@
+@include kbrinl-exports('kbrinl/component/details') {
+  .kbrinl-details {
+    @include kbrinl-font($size: 19);
+    @include kbrinl-text-colour;
+    @include kbrinl-responsive-margin(6, 'bottom');
+
+    display: block;
+  }
+
+  .kbrinl-details__summary {
+    // Make the focus outline shrink-wrap the text content of the summary
+    display: inline-block;
+
+    // Absolutely position the marker against this element
+    position: relative;
+
+    margin-bottom: kbrinl-spacing(1);
+
+    // Allow for absolutely positioned marker and align with disclosed text
+    padding-left: kbrinl-spacing(4) + $kbrinl-border-width;
+
+    // Style the summary to look like a link...
+    color: $kbrinl-link-colour;
+    cursor: pointer;
+
+    &:hover {
+      color: $kbrinl-link-hover-colour;
+    }
+
+    &:focus {
+      @include kbrinl-focused-text;
+    }
+  }
+
+  // ...but only underline the text, not the arrow
+  .kbrinl-details__summary-text {
+    text-decoration: underline;
+  }
+
+  // Remove the underline when focussed to avoid duplicate borders
+  .kbrinl-details__summary:focus .kbrinl-details__summary-text {
+    text-decoration: none;
+  }
+
+  // Remove the default details marker so we can style our own consistently and
+  // ensure it displays in Firefox (see implementation.md for details)
+  .kbrinl-details__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  // Append our own open / closed marker using a pseudo-element
+  .kbrinl-details__summary:before {
+
+    @include kbrinl-shape-arrow($direction: right, $base: 14px);
+    content: '';
+    position: absolute;
+
+    top: -1px;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    .kbrinl-details[open] > & {
+      @include kbrinl-shape-arrow($direction: down, $base: 14px);
+    }
+  }
+
+  .kbrinl-details__text {
+    padding: kbrinl-spacing(3);
+    padding-left: kbrinl-spacing(4);
+    border-left: $kbrinl-border-width solid $kbrinl-border-colour;
+  }
+
+  .kbrinl-details__text p {
+    margin-top: 0;
+    margin-bottom: kbrinl-spacing(4);
+  }
+
+  .kbrinl-details__text > :last-child {
+    margin-bottom: 0;
+  }
+}

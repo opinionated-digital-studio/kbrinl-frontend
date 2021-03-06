@@ -1,0 +1,257 @@
+@include kbrinl-exports('kbrinl/component/header') {
+
+  $kbrinl-header-background: kbrinl-colour('black');
+  $kbrinl-header-border-color: $kbrinl-brand-colour;
+  $kbrinl-header-border-width: kbrinl-spacing(2);
+  $kbrinl-header-text: kbrinl-colour('white');
+  $kbrinl-header-link: kbrinl-colour('white');
+  $kbrinl-header-link-hover: kbrinl-colour('white');
+  $kbrinl-header-link-active: $kbrinl-brand-colour;
+  $kbrinl-header-nav-item-border-color: #2e3133;
+
+  .kbrinl-header {
+    @include kbrinl-font($size: 16);
+
+    border-bottom: $kbrinl-header-border-width solid $kbrinl-header-border-color;
+    color: $kbrinl-header-text;
+    background: $kbrinl-header-background;
+  }
+
+  .kbrinl-header__container--full-width {
+    padding: 0 kbrinl-spacing(3);
+    border-color: $kbrinl-header-border-color;
+
+    .kbrinl-header__menu-button {
+      right: kbrinl-spacing(3);
+    }
+  }
+
+  .kbrinl-header__container {
+    @include kbrinl-clearfix;
+    position: relative;
+    padding: kbrinl-spacing(4) 0;
+
+    @include kbrinl-media-query ($from: desktop) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .kbrinl-header__logo,
+  .kbrinl-header__content {
+    box-sizing: border-box;
+  }
+
+  .kbrinl-header__logo {
+
+    @include kbrinl-media-query ($from: desktop) {
+      padding-bottom: 0;
+    }
+  }
+
+  .kbrinl-header__content {
+    @include kbrinl-media-query ($from: desktop) {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      margin-left: auto;
+    }
+  }
+
+  .kbrinl-header__logotype-bti {
+    width: 50px;
+    vertical-align: top;
+    @include kbrinl-media-query($from: desktop) {
+      width: 80px;
+    }
+  }
+
+  .kbrinl-header__logotype-text {
+    display: inline-block;
+    margin-left: kbrinl-spacing(2);
+
+    @include kbrinl-media-query($from: tablet) {
+      margin-left: kbrinl-spacing(4);
+    }
+  }
+
+  .kbrinl-header__logotype-title {
+    @include kbrinl-font($size: 24, $weight: bold);
+    margin-bottom: kbrinl-spacing(2);
+  }
+
+  .kbrinl-header__logotype-title--mobile {
+    @include kbrinl-font($size: 36, $weight: bold);
+    display: block;
+
+    @include kbrinl-media-query($from: desktop) {
+      display: none;
+    }
+  }
+
+  .kbrinl-header__logotype-title--desktop {
+    display: none;
+
+    @include kbrinl-media-query($from: desktop) {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  .kbrinl-header__product-name {
+    @include kbrinl-font($size: 19, $line-height: 1);
+    display: block;
+
+    @include kbrinl-media-query($from: desktop) {
+      margin-top: kbrinl-spacing(2);
+    }
+  }
+
+  .kbrinl-header__link {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $kbrinl-header-link;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include kbrinl-focused-text;
+    }
+  }
+
+  .kbrinl-header__link--homepage {
+    // Font size needs to be set on the link so that the box sizing is correct
+    // in Firefox
+    @include kbrinl-font($size: false, $weight: bold);
+
+    display: inline-block;
+    font-size: 30px; // We don't have a mixin that produces 30px font size
+    line-height: 1;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+
+    // Remove any borders that show when focused and hovered.
+    &:focus {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  .kbrinl-header__navigation {
+    display: block;
+    margin-bottom: kbrinl-spacing(2);
+    padding: kbrinl-spacing(2) 0 0 0;
+    list-style: none;
+
+    @include kbrinl-media-query ($from: desktop) {
+      margin: 0;
+      padding: 0;
+      text-align: right;
+    }
+  }
+
+  .kbrinl-header__navigation-item--active {
+    a {
+      &:link,
+      &:hover,
+      &:visited {
+        color: $kbrinl-header-link-active;
+      }
+
+      // When focussed, the text colour needs to be darker to ensure that colour
+      // contrast is still acceptable
+      &:focus {
+        color: $kbrinl-focus-text-colour;
+      }
+    }
+  }
+
+  .kbrinl-header__navigation--end {
+    @include kbrinl-media-query ($from: desktop) {
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  .kbrinl-header__navigation-item {
+    padding: kbrinl-spacing(2) 0;
+    border-bottom: 1px solid $kbrinl-header-nav-item-border-color;
+
+    @include kbrinl-media-query ($from: desktop) {
+      display: inline-block;
+      margin-right: kbrinl-spacing(3);
+      padding: 0;
+      border: 0;
+    }
+
+    a {
+      @include kbrinl-font($size: 16, $weight: bold);
+      white-space: nowrap;
+    }
+  }
+
+  .kbrinl-header__menu-button {
+    @include kbrinl-font($size: 16);
+    display: none;
+    position: absolute;
+    top: kbrinl-spacing(7);
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: $kbrinl-header-link;
+    background: none;
+
+    @include kbrinl-media-query ($from: tablet) {
+      top: kbrinl-spacing(3);
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include kbrinl-focused-text;
+    }
+
+    &:after {
+      @include kbrinl-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+      content: '';
+      margin-left: kbrinl-spacing(1);
+    }
+  }
+
+  .kbrinl-header__menu-button--open {
+    &:after {
+      @include kbrinl-shape-arrow($direction: up, $base: 10px, $display: inline-block);
+    }
+  }
+
+  .js-enabled {
+    .kbrinl-header__menu-button {
+      display: block;
+      @include kbrinl-media-query ($from: desktop) {
+        display: none;
+      }
+    }
+
+    .kbrinl-header__navigation {
+      display: none;
+      @include kbrinl-media-query ($from: desktop) {
+        display: block;
+      }
+    }
+
+    .kbrinl-header__navigation--open {
+      display: block;
+    }
+  }
+}

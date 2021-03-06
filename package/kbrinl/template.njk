@@ -1,0 +1,79 @@
+{% from "./components/header/macro.njk" import kbrinlHeader -%}
+{% from "./components/footer/macro.njk" import kbrinlFooter -%}
+{% from "./components/skip-link/macro.njk" import kbrinlSkipLink -%}
+{% from "./components/top-bar/macro.njk" import kbrinlTopBar -%}
+
+{# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
+{%- set assetUrl = assetUrl | default(assetPath) -%}
+<!DOCTYPE html>
+<html lang="{{ htmlLang | default('en') }}" class="kbrinl-template {{ htmlClasses }}">
+  <head>
+    <meta charset="utf-8">
+    <title{% if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{% block pageTitle %}Indonesia.nl{% endblock %}{% if siteTitle %} | {{siteTitle}}{% endif %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}"> {# Hardcoded value of $kbrinl-black #}
+    {# Ensure that older IE versions always render with the correct rendering engine #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% block headIcons %}
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ assetPath | default('/assets/favicon') }}/kbrinl-apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="{{ assetPath | default('/assets/favicon') }}/kbrinl-favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="{{ assetPath | default('/assets/favicon') }}/kbrinl-favicon-16x16.png">
+      <link rel="manifest" href="{{ assetPath | default('/assets/favicon') }}/kbrinl.webmanifest">
+      <link rel="mask-icon" href="{{ assetPath | default('/assets/favicon') }}/kbrinl-safari-pinned-tab.svg" color="{{themeColor | default('#eb0000')}}">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+    {% endblock %}
+
+    {% block head %}{% endblock %}
+    {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
+    {# image url needs to be absolute e.g. http://wwww.domain.com/.../kbrinl-opengraph-image.png #}
+    <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/kbrinl-opengraph-image.png">
+  </head>
+  <body class="kbrinl-template__body {{ bodyClasses }}" {%- for attribute, value in bodyAttributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    {% block skipLink %}
+      {{ kbrinlSkipLink({
+        href: '#main-content',
+        text: 'Skip to main content'
+      }) }}
+    {% endblock %}
+
+    {% block topBar %}
+      {{ kbrinlTopBar({
+      html: '<p class="kbrinl-top-bar__text">
+      <img class="kbrinl-!-margin-right-1" src="/assets/images/netherlands-flag-icon-16.ce0531f.28d9b0ced618d1d8b63995131ba28c48.png"/>
+      <img class="kbrinl-!-margin-right-1" src="/assets/images/indonesia-flag-icon-16.ce0531f.a5927be004155c6fdbc3fd757d5f9690.png"/>
+      A sub-website of the Embassy of the Republic of Indonesia in The Netherlands. <a class="kbrinl-top-bar__link" target="__blank" href="https://indonesia.nl">Go to main website</a></p>'
+      }) }}
+    {% endblock %}
+
+    {% block header %}
+      {{ kbrinlHeader({
+        productName: header.productName,
+        navigation: header.navigation
+      }) }}
+    {% endblock %}
+
+    {% block main %}
+      <div class="kbrinl-width-container {{ containerClasses }}">
+        {% block beforeContent %}{% endblock %}
+        <main class="kbrinl-main-wrapper {{ mainClasses }}" id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
+          {% block content %}{% endblock %}
+        </main>
+      </div>
+    {% endblock %}
+
+    {% block footer %}
+      {{ kbrinlFooter({
+        heading: footer.heading,
+        navigation: footer.navigation
+      }) }}
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+
+    {% block bodyEnd %}{% endblock %}
+  </body>
+</html>

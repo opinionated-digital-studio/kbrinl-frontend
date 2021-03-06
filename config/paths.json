@@ -1,0 +1,14 @@
+{
+  "src": "src/kbrinl/",
+  "dist": "dist/",
+  "app": "app/",
+  "public": "public/",
+  "views": "app/views",
+  "pages": "app/views/pages",
+  "layouts": "app/views/layouts",
+  "components": "src/kbrinl/components",
+  "ports": {
+    "app": 4000,
+    "test": "8888"
+  }
+}

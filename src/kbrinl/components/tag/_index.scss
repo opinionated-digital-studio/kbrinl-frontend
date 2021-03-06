@@ -1,0 +1,75 @@
+@include kbrinl-exports('kbrinl/component/tag') {
+  .kbrinl-tag {
+
+    @include kbrinl-font($size: 16, $weight: bold, $line-height: 1);
+
+    display: inline-block;
+    padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+
+    // When a user customises their colours often the background is removed,
+    // by adding a outline we ensure that the tag component still keeps it's meaning.
+    // https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+
+    color: kbrinl-colour('white');
+    background-color: kbrinl-colour('blue');
+    letter-spacing: 1px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  // Deprecated. We'll remove this class in a future release. Use `.kbrinl-tag--grey` instead.
+  .kbrinl-tag--inactive {
+    background-color: kbrinl-colour('dark-grey');
+  }
+
+  .kbrinl-tag--grey {
+    color: kbrinl-shade(kbrinl-colour('dark-grey'), 30);
+    background: kbrinl-tint(kbrinl-colour('dark-grey'), 90);
+  }
+
+  .kbrinl-tag--purple {
+    color: kbrinl-shade(kbrinl-colour('purple'), 20);
+    background: kbrinl-tint(kbrinl-colour('purple'), 80);
+  }
+
+  .kbrinl-tag--turquoise {
+    color: kbrinl-shade(kbrinl-colour('turquoise'), 60);
+    background: kbrinl-tint(kbrinl-colour('turquoise'), 70);
+  }
+
+  .kbrinl-tag--blue {
+    color: kbrinl-shade(kbrinl-colour('blue'), 30);
+    background: kbrinl-tint(kbrinl-colour('blue'), 80);
+  }
+
+  .kbrinl-tag--yellow {
+    color: kbrinl-shade(kbrinl-colour('yellow'), 65);
+    background: kbrinl-tint(kbrinl-colour('yellow'), 75);
+  }
+
+  .kbrinl-tag--orange {
+    color: kbrinl-shade(kbrinl-colour('orange'), 55);
+    background: kbrinl-tint(kbrinl-colour('orange'), 70);
+  }
+
+  .kbrinl-tag--red {
+    color: kbrinl-shade(kbrinl-colour('red'), 30);
+    background: kbrinl-tint(kbrinl-colour('red'), 80);
+  }
+
+  .kbrinl-tag--pink {
+    color: kbrinl-shade(kbrinl-colour('pink'), 40);
+    background: kbrinl-tint(kbrinl-colour('pink'), 80);
+  }
+
+  .kbrinl-tag--green {
+    color: kbrinl-shade(kbrinl-colour('green'), 20);
+    background: kbrinl-tint(kbrinl-colour('green'), 80);
+  }
+}

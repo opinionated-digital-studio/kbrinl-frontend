@@ -1,0 +1,22 @@
+@include kbrinl-exports('kbrinl/components/jumbotron') {
+  $kbrinl-jumbotron-background: $kbrinl-brand-colour;
+  $kbrinl-jumbotron-colour: kbrinl-colour('white');
+
+  .kbrinl-jumbotron {
+    padding: kbrinl-spacing(2) 0 kbrinl-spacing(4) 0;
+    background-color: $kbrinl-jumbotron-background;
+  }
+
+  .kbrinl-jumbotron__heading,
+  .kbrinl-jumbotron__description {
+    color: $kbrinl-jumbotron-colour;
+  }
+
+  .kbrinl-jumbotron__heading {
+    margin-bottom: kbrinl-spacing(1);
+  }
+
+  .kbrinl-jumbotron__description {
+    @include kbrinl-font($size: 24);
+  }
+}

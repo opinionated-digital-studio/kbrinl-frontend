@@ -1,0 +1,45 @@
+<header class="kbrinl-header {{ params.classes if params.classes }}" role="banner" data-module="kbrinl-header">
+  <div class="kbrinl-header__container {{ params.containerClasses | default('kbrinl-width-container') }}">
+    <div class="kbrinl-header__logo">
+      <a href="{{ params.homeageUrl | default('/') }}" class="kbrinl-header__link kbrinl-header__link--homepage">
+        <span class="kbrinl-header__logotype">
+          <img src="/assets/images/bti-color.png" class="kbrinl-header__logotype-bti" alt=""/>
+        </span>
+        <span class="kbrinl-header__logotype-text">
+          <span class="kbrinl-header__logotype-title kbrinl-header__logotype-title--mobile">Indonesia.nl</span>
+          <span class="kbrinl-header__logotype-title kbrinl-header__logotype-title--desktop">
+            The Embassy of <br/> the Republic of Indonesia <br/> in The Hague, the Netherlands 
+          </span>
+          {% if (params.productName) %}
+          <span class="kbrinl-header__product-name">
+            {{ params.productName }}
+          </span>
+          {% endif %}
+        </span>
+      </a>
+    </div>
+
+    {% if params.navigation  %}
+    <div class="kbrinl-header__content">
+      <button type="button" class="kbrinl-header__menu-button kbrinl-js-header-toggle" aria-controls="navigation" aria-label="{{ params.menuButtonLabel | default('Show or hide navigation menu') }}">Menu</button>
+      <nav>
+        <ul id="navigation" class="kbrinl-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="{{ params.navigationLabel | default('Navigation menu') }}">
+          {% for item in params.navigation %}
+            {% if item.text or item.html %}
+              <li class="kbrinl-header__navigation-item{{ ' kbrinl-header__navigation-item--active' if item.active }}">
+                {% if item.href %}
+                  <a class="kbrinl-header__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+                {% endif %}
+                  {{ item.html | safe if item.html else item.text }}
+                {% if item.href %}
+                  </a>
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+  </div>
+</header>

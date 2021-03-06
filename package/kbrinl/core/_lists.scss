@@ -1,0 +1,68 @@
+@import '../base';
+
+@include kbrinl-exports('kbrinl/core/lists') {
+
+  %kbrinl-list {
+    @include kbrinl-font($size: 19);
+    @include kbrinl-text-colour;
+    @include kbrinl-responsive-margin(4, 'bottom');
+    margin-top: 0;
+    padding-left: 0;
+    list-style-type: none;
+
+    // Add a top margin for nested lists
+    %kbrinl-list {
+      margin-top: kbrinl-spacing(2);
+    }
+  }
+
+  %kbrinl-list > li {
+    // Lists without numbers or bullets should always have extra space between
+    // list items. Lists with numbers or bullets only have this extra space on
+    // tablet and above
+    margin-bottom: kbrinl-spacing(1);
+  }
+
+  .kbrinl-list {
+    @extend %kbrinl-list;
+  }
+
+  %kbrinl-list--bullet {
+    padding-left: kbrinl-spacing(4);
+    list-style-type: disc;
+  }
+
+  %kbrinl-list--number {
+    padding-left: kbrinl-spacing(4);
+    list-style-type: decimal;
+  }
+
+  %kbrinl-list--bullet > li,
+  %kbrinl-list--number > li {
+    margin-bottom: 0;
+
+    @include kbrinl-media-query($from: tablet) {
+      margin-bottom: kbrinl-spacing(1);
+    }
+  }
+
+  %kbrinl-list--spaced > li {
+    margin-bottom: kbrinl-spacing(2);
+
+    @include kbrinl-media-query($from: tablet) {
+      margin-bottom: kbrinl-spacing(3);
+    }
+  }
+
+  .kbrinl-list--bullet {
+    @extend %kbrinl-list--bullet;
+  }
+
+  .kbrinl-list--number {
+    @extend %kbrinl-list--number;
+  }
+
+  .kbrinl-list--spaced {
+    @extend %kbrinl-list--spaced;
+  }
+}

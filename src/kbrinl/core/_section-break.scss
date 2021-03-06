@@ -1,0 +1,52 @@
+@import '../base';
+
+@include kbrinl-exports('kbrinl/core/section-break') {
+
+  %kbrinl-section-break {
+    margin: 0;
+    border: 0;
+  }
+
+  .kbrinl-section-break {
+    @extend %kbrinl-section-break;
+  }
+
+  // Sizes
+
+  %kbrinl-section-break--xl {
+    @include kbrinl-responsive-margin(8, 'top');
+    @include kbrinl-responsive-margin(8, 'bottom');
+  }
+
+  .kbrinl-section-break--xl {
+    @extend %kbrinl-section-break--xl;
+  }
+
+  %kbrinl-section-break--l {
+    @include kbrinl-responsive-margin(6, 'top');
+    @include kbrinl-responsive-margin(6, 'bottom');
+  }
+
+  .kbrinl-section-break--l {
+    @extend %kbrinl-section-break--l;
+  }
+
+  %kbrinl-section-break--m {
+    @include kbrinl-responsive-margin(4, 'top');
+    @include kbrinl-responsive-margin(4, 'bottom');
+  }
+
+  .kbrinl-section-break--m {
+    @extend %kbrinl-section-break--m;
+  }
+
+  // Visible variant
+
+  %kbrinl-section-break--visible {
+    border-bottom: 1px solid $kbrinl-border-colour;
+  }
+
+  .kbrinl-section-break--visible {
+    @extend %kbrinl-section-break--visible;
+  }
+}

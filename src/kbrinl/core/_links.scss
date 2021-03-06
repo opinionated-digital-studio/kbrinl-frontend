@@ -1,0 +1,29 @@
+@import '../base';
+
+@include kbrinl-exports('kbrinl/core/links') {
+
+  %kbrinl-link {
+    @include kbrinl-link-common;
+    @include kbrinl-link-style-default;
+    @include kbrinl-link-print-friendly;
+  }
+
+  .kbrinl-link {
+    @extend %kbrinl-link;
+  }
+
+  // Variant classes should always be used in conjunction with the .kbrinl-link
+  // class, so we do not need the common link styles as they will be inherited.
+
+  .kbrinl-link--muted {
+    @include kbrinl-link-style-muted;
+  }
+
+  .kbrinl-link--text-colour {
+    @include kbrinl-link-style-text;
+  }
+
+  .kbrinl-link--no-visited-state {
+    @include kbrinl-link-style-no-visited-state;
+  }
+}

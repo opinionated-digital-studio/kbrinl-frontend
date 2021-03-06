@@ -1,0 +1,26 @@
+@import '../error-message/index';
+@import '../input/index';
+@import '../hint/index';
+@import '../label/index';
+
+@include kbrinl-exports('kbrinl/component/date-input') {
+  .kbrinl-date-input {
+    @include kbrinl-clearfix;
+    // font-size: 0 removes whitespace caused by inline-block
+    font-size: 0;
+  }
+
+  .kbrinl-date-input__item {
+    display: inline-block;
+    margin-right: kbrinl-spacing(4);
+    margin-bottom: 0;
+  }
+
+  .kbrinl-date-input__label {
+    display: block;
+  }
+
+  .kbrinl-date-input__input {
+    margin-bottom: 0;
+  }
+}

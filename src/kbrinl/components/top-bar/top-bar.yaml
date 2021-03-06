@@ -1,0 +1,17 @@
+params:
+  - name: text
+    type: string
+    required: true
+    description: If `html` is set, this is not required. Text to use within the top bar. If `html` is provided, the `text` argument will be ignored.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the top bar. If `html` is provided, the `text` argument will be ignored.
+
+examples:
+  - name: default
+    data:
+      text: A service of the Embassy of the Republic of Indonesia.
+  - name: with HTML
+    data:
+      html: <p class="kbrinl-top-bar__text">A service of the <strong>Embassy of the Republic of Indonesia</strong></p>

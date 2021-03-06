@@ -1,0 +1,74 @@
+@include kbrinl-exports('kbrinl/component/back-link') {
+
+  // Size of chevron (excluding border)
+  $chevron-size: 7px;
+
+  // Size of chevron border
+  $chevron-border-width: 2px;
+
+  // Colour of chevron
+  $chevron-border-colour: $kbrinl-secondary-text-colour;
+
+  .kbrinl-back-link {
+    @include kbrinl-typography-responsive($size: 16);
+    @include kbrinl-link-common;
+    @include kbrinl-link-style-text;
+
+    display: inline-block;
+    position: relative;
+
+    margin-top: kbrinl-spacing(3);
+    margin-bottom: kbrinl-spacing(3);
+
+    // Allow space for the arrow
+    padding-left: 14px;
+  }
+
+  // Only underline if the component is linkable
+  .kbrinl-back-link[href] {
+    text-decoration: underline;
+
+    // When the back link is focused, hide the bottom link border as the
+    // focus styles has a bottom border.
+    &:focus {
+      text-decoration: none;
+
+      &:before {
+        border-color: $kbrinl-text-colour;
+      }
+    }
+  }
+
+  // Prepend left pointing chevron
+  .kbrinl-back-link:before {
+    content: '';
+    display: block;
+
+    // Vertically align with the parent element
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    left: 0;
+
+    width: $chevron-size;
+    height: $chevron-size;
+
+    margin: auto 0;
+
+    transform: rotate(225deg);
+
+    border: solid;
+    border-width: $chevron-border-width $chevron-border-width 0 0;
+    border-color: $chevron-border-colour;
+  }
+
+  .kbrinl-back-link:after {
+    content: '';
+    position: absolute;
+    top: -14px;
+    right: 0;
+    bottom: -14px;
+    left: 0;
+  }
+}

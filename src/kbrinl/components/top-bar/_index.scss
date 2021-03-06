@@ -1,0 +1,21 @@
+@include kbrinl-exports('kbrinl/components/top-bar') {
+  .kbrinl-top-bar {
+    border-bottom: .5px solid kbrinl-shade(kbrinl-colour('dark-grey'), 40%);
+    background-color: kbrinl-shade(kbrinl-colour('dark-grey'), 70%);
+  }
+
+  .kbrinl-top-bar__text {
+    @include kbrinl-font($size: 14);
+    margin: 0;
+    padding: kbrinl-spacing(1) 0;
+    color: kbrinl-colour('mid-grey');
+  }
+
+  .kbrinl-top-bar__link {
+    color: kbrinl-colour('white');
+
+    &:focus {
+      @include kbrinl-focused-text;
+    }
+  }
+}

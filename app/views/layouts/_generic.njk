@@ -1,0 +1,23 @@
+{% extends "template.njk" %}
+
+{% block pageTitle %}
+  {{ pageTitle }}
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/public/app.min.css">
+  {% block styles %}
+  {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+  <script src="/public/app.min.js">
+  </script>
+  <script>
+    if (window.KBRINLFrontend) {
+      const body = document.querySelector('body')
+
+      window.KBRINLFrontend.initAll()
+    }
+  </script>
+{% endblock %}

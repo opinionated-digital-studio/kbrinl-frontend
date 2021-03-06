@@ -1,0 +1,106 @@
+////
+/// @group settings/measurements
+////
+
+// =========================================================
+// Page layout
+// =========================================================
+
+/// Width of main container
+///
+/// @type Number
+/// @access public
+
+$kbrinl-page-width: 960px !default;
+
+/// Map of grid column widths
+///
+/// @type Map
+/// @access public
+
+$kbrinl-grid-widths: (
+  one-quarter: 25%,
+  one-third: 33.3333%,
+  one-half: 50%,
+  two-thirds: 66.6666%,
+  three-quarters: 75%,
+  five-eighths: 62.5%,
+  full: 100%
+) !default;
+
+/// Width of gutter between grid columns
+///
+/// @type Number
+/// @access public
+
+$kbrinl-gutter: 30px !default;
+
+/// Width of half the gutter between grid columns
+///
+/// @type Number
+/// @access public
+
+$kbrinl-gutter-half: $kbrinl-gutter / 2;
+
+// =========================================================
+// Borders
+// =========================================================
+
+/// Standard border width
+///
+/// @type Number
+/// @access public
+
+$kbrinl-border-width: 5px !default;
+
+/// Wide border width
+///
+/// @type Number
+/// @access public
+
+$kbrinl-border-width-wide: 10px !default;
+
+/// Narrow border width
+///
+/// @type Number
+/// @access public
+
+$kbrinl-border-width-narrow: 4px !default;
+
+/// Form control border width
+///
+/// @type Number
+/// @access public
+
+$kbrinl-border-width-form-element: 2px !default;
+
+/// Form control border width when in error state
+///
+/// @type Number
+/// @access public
+/// @deprecated Use $kbrinl-border-width-form-element instead. There should be no
+///   difference in thickness for inputs in the error state, in order to
+///   maintain a distinct focus state.
+
+$kbrinl-border-width-form-element-error: 2px !default;
+
+/// Form group border width when in error state
+///
+/// @type Number
+/// @access public
+
+$kbrinl-border-width-form-group-error: $kbrinl-border-width !default;
+
+/// Border width of focus outline
+///
+/// @type Number
+/// @access public
+
+$kbrinl-focus-width: 3px !default;
+
+/// Hover width for form controls with a hover state
+///
+/// @type Number
+/// @access public
+
+$kbrinl-hover-width: 10px !default;

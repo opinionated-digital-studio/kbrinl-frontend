@@ -1,0 +1,58 @@
+{% from "components/breadcrumbs/macro.njk" import kbrinlBreadcrumbs %}
+{% from "macros/show-examples.njk" import showExamples %}
+
+{% extends "_full-width.njk" %}
+
+{% set bodyClasses %}
+  language-markup
+{% endset %}
+
+{% set componentName = componentPath %}
+{% set componentNameHuman = componentName | replace("-", " ") %}
+
+{% set htmlMarkup %}
+  {% include componentName +"/"+ componentName +".njk" ignore missing %}
+{% endset %}
+
+{% block pageTitle %}
+  {{ componentNameHuman | capitalize }}
+{% endblock %}
+
+  {% block main %}
+    <div class="kbrinl-width-container">
+    {% block beforeContent %}
+      {{ kbrinlBreadcrumbs({
+        "items": [
+        { text: 'KRINL Frontend', href: '/' },
+        { text: 'Components', href: '/components' },
+        { text: componentNameHuman | capitalize }
+        ]
+      }) }}
+    </div>
+  {% endblock %}
+    <div class="kbrinl-main-wrapper {{mainClasses}}" id="main-content" role="main">
+    {% block content %}
+      <div class="kbrinl-width-container">
+        <h1 class="kbrinl-heading-xl">
+          {% block componentName %}
+            {{ componentNameHuman | capitalize }}
+          {% endblock %}
+        </h1>
+      </div>
+
+      {% block examples %}
+        {{ showExamples(componentName, componentNameHuman, componentData, legacyQuery) }}
+    {% endblock %}
+    </div>
+  {% endblock %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js" integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    const domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
+    domReady(iFrameResize({}, '.js-component-preview'))
+  </script>
+{% endblock %}
+

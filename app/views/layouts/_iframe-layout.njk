@@ -1,0 +1,22 @@
+{% extends "_generic.njk" %}
+
+{% set htmlClasses = "app-no-canvas-background" %}
+
+{% block pageTitle %}{{ pageTitle | capitalize }}{% endblock %}
+
+{# Turn the header and footer off #}
+{% block topBar %}
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js" integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    const domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
+    domReady(iFrameResize({}, '.js-component-preview'))
+  </script>
+{% endblock %}
+

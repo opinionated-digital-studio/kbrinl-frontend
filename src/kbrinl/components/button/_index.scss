@@ -1,0 +1,255 @@
+@include kbrinl-exports('kbrinl/component/button') {
+  $kbrinl-button-colour: kbrinl-colour('green');
+  $kbrinl-button-hover-colour: kbrinl-shade($kbrinl-button-colour, 20%);
+  $kbrinl-button-shadow-colour: kbrinl-shade($kbrinl-button-colour, 60%);
+  $kbrinl-button-text-colour: kbrinl-colour('white');
+
+  // Secondary button variables
+  $kbrinl-secondary-button-colour: kbrinl-colour('light-grey');
+  $kbrinl-secondary-button-hover-colour: kbrinl-shade($kbrinl-secondary-button-colour, 10%);
+  $kbrinl-secondary-button-shadow-colour: kbrinl-shade($kbrinl-secondary-button-colour, 40%);
+  $kbrinl-secondary-button-text-colour: kbrinl-colour('black');
+
+  // Warning button variables
+  $kbrinl-warning-button-colour: kbrinl-colour('red');
+  $kbrinl-warning-button-hover-colour: kbrinl-shade($kbrinl-warning-button-colour, 20%);
+  $kbrinl-warning-button-shadow-colour: kbrinl-shade($kbrinl-warning-button-colour, 60%);
+  $kbrinl-warning-button-text-colour: kbrinl-colour('white');
+
+  // Inverted button vaariables
+  $kbrinl-inverted-button-colour: kbrinl-colour('white');
+  $kbrinl-inverted-button-hover-colour: kbrinl-shade($kbrinl-inverted-button-colour, 10%);
+  $kbrinl-inverted-button-shadow-colour: kbrinl-shade($kbrinl-brand-colour, 60%);
+  $kbrinl-inverted-button-text-colour: $kbrinl-brand-colour;
+
+  // Because the shadow (s0) is visually 'part of' the button, we need to reduce
+  // the height of the button to compensate by adjusting its padding (s1) and
+  // increase the bottom margin to include it (s2).
+  $button-shadow-size: $kbrinl-border-width-form-element;
+
+  .kbrinl-button {
+    @include kbrinl-font($size: 19, $line-height: 19px);
+    @include kbrinl-responsive-margin(6, 'bottom', $adjustment: $button-shadow-size); // s2
+
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding: (kbrinl-spacing(2) - $kbrinl-border-width-form-element) kbrinl-spacing(2) (kbrinl-spacing(2) - $kbrinl-border-width-form-element - ($button-shadow-size / 2)); // s1
+    border: $kbrinl-border-width-form-element solid transparent;
+    border-radius: 0;
+    color: $kbrinl-button-text-colour;
+    background-color: $kbrinl-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $kbrinl-button-shadow-colour; // s0
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    appearance: none;
+
+    @include kbrinl-media-query($from: tablet) {
+      width: auto;
+    }
+
+    // Ensure that any global link styles are overridden
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $kbrinl-button-text-colour;
+      text-decoration: none;
+    }
+
+    // Fix unwanted button padding in Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    &:hover {
+      background-color: $kbrinl-button-hover-colour;
+    }
+
+    &:active {
+      // Bump the button down so it looks like its being pressed in
+      top: $button-shadow-size;
+    }
+
+    &:focus {
+      border-color: $kbrinl-focus-colour;
+      // When colours are overridden, for example when users have a dark mode,
+      // backgrounds and box-shadows disappear, so we need to ensure there's a
+      // transparent outline which will be set to a visible colour.
+      // Since Internet Explorer 8 does not support box-shadow, we want to force the user-agent outlines
+    }
+
+    // alphagov/kbrinl_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+    &:focus:not(:active):not(:hover) {
+      border-color: $kbrinl-focus-colour;
+      color: $kbrinl-focus-text-colour;
+      background-color: $kbrinl-focus-colour;
+      box-shadow: 0 2px 0 $kbrinl-focus-text-colour;
+    }
+
+    // The following adjustments do not work for <input type="button"> as
+    // non-container elements cannot include pseudo elements (i.e. ::before).
+
+    // Use a pseudo element to expand the click target area to include the
+    // button's shadow as well, in case users try to click it.
+    &:before {
+      content: '';
+      display: block;
+
+      position: absolute;
+
+      top: -$kbrinl-border-width-form-element;
+      right: -$kbrinl-border-width-form-element;
+      bottom: -($kbrinl-border-width-form-element + $button-shadow-size);
+      left: -$kbrinl-border-width-form-element;
+
+      background: transparent;
+    }
+
+    // When the button is active it is shifted down by $button-shadow-size to
+    // denote a 'pressed' state. If the user happened to click at the very top
+    // of the button, their mouse is no longer over the button (because it has
+    // 'moved beneath them') and so the click event is not fired.
+    //
+    // This corrects that by shifting the top of the pseudo element so that it
+    // continues to cover the area that the user originally clicked, which means
+    // the click event is still fired.
+    //
+    // 🎉
+    &:active:before {
+      top: -($kbrinl-border-width-form-element + $button-shadow-size);
+    }
+  }
+
+  .kbrinl-button--disabled,
+  .kbrinl-button[disabled='disabled'],
+  .kbrinl-button[disabled] {
+    opacity: (.5);
+
+    &:hover {
+      background-color: $kbrinl-button-colour;
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      top: 0;
+      box-shadow: 0 $button-shadow-size 0 $kbrinl-button-shadow-colour; // s0
+    }
+  }
+
+  .kbrinl-button--secondary {
+    background-color: $kbrinl-secondary-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $kbrinl-secondary-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $kbrinl-secondary-button-text-colour;
+    }
+
+    // alphagov/kbrinl_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+
+    &:hover {
+      background-color: $kbrinl-secondary-button-hover-colour;
+
+      &[disabled] {
+        background-color: $kbrinl-secondary-button-colour;
+      }
+    }
+  }
+
+  .kbrinl-button--warning {
+    background-color: $kbrinl-warning-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $kbrinl-warning-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $kbrinl-warning-button-text-colour;
+    }
+
+    // alphagov/kbrinl_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+
+    &:hover {
+      background-color: $kbrinl-warning-button-hover-colour;
+
+      &[disabled] {
+        background-color: $kbrinl-warning-button-colour;
+      }
+    }
+  }
+
+  .kbrinl-button--inverted {
+    background-color: $kbrinl-inverted-button-colour;
+    box-shadow: 0 $button-shadow-size 0 $kbrinl-inverted-button-shadow-colour;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: $kbrinl-inverted-button-text-colour;
+    }
+
+    // alphagov/kbrinl_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors so
+    // so that unvisited links styled as buttons do not end up with dark blue
+    // text when focussed.
+
+    &:hover {
+      background-color: $kbrinl-inverted-button-hover-colour;
+
+      &[disabled] {
+        background-color: $kbrinl-inverted-button-colour;
+      }
+    }
+  }
+
+  .kbrinl-button--start {
+    @include kbrinl-typography-weight-bold;
+    @include kbrinl-typography-responsive($size: 24, $override-line-height: 1);
+
+    display: inline-flex;
+
+    justify-content: center;
+    min-height: auto;
+  }
+
+  .kbrinl-button__start-icon {
+    align-self: center;
+    flex-shrink: 0;
+    margin-left: kbrinl-spacing(1);
+    vertical-align: middle;
+
+    @include kbrinl-media-query($from: desktop) {
+      margin-left: kbrinl-spacing(2);
+    }
+  }
+}

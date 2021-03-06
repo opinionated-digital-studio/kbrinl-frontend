@@ -1,0 +1,29 @@
+{% extends '_generic.njk' %}
+{% from 'components/jumbotron/macro.njk' import kbrinlJumbotron %}
+
+{% block main %}
+  <main id="main-content" role="main">
+    {% block content %}
+      {{ kbrinlJumbotron({
+        heading: "Design indonesia.nl services with the KBRINL component library",
+        descriptionText: "Make use of the extensive research and experience that went into creating this design system and deliver accessible and effective services.",
+        classes: 'kbrinl-!-padding-bottom-0',
+        buttons: [{
+          text: "Get started",
+          href: "/get-started",
+          isStartButton: true,
+          classes: 'kbrinl-button--inverted'
+        }]
+    }) }}
+    {% endblock %}
+    <div class="kbrinl-width-container">
+      <div class="kbrinl-main-wrapper">
+        <div class="kbrinl-grid-row">
+          <div class="kbrinl-grid-column-two-thirds">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+

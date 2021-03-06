@@ -1,0 +1,54 @@
+@import 'typography-font-families';
+
+////
+/// @group settings/typography
+////
+
+// =========================================================
+// Font families
+// =========================================================
+
+/// Font families to use for all typography on screen media
+///
+/// @type List
+/// @access public
+
+$kbrinl-font-family: $kbrinl-font-family-plus-jakarta, arial, helvetica, sans-serif !default;
+
+/// Font families to use for print media
+///
+/// We recommend that you use system fonts when printing. This will avoid issues
+/// with some printer drivers and operating systems.
+///
+/// @type List
+/// @access public
+
+$kbrinl-font-family-print: sans-serif !default;
+
+/// Include the default @font-face declarations
+///
+/// If you have set $kbrinl-font-family to something other than
+/// `$kbrinl-font-family-plus-jakarta` this option is disabled by default.
+///
+/// @type Boolean
+/// @access public
+
+$kbrinl-include-default-font-face: (
+  $kbrinl-font-family == $kbrinl-font-family-plus-jakarta
+) !default;
+
+// =========================================================
+// Font weights
+// =========================================================
+
+/// Font weight for regular typography
+///
+/// @type Number
+/// @access public
+$kbrinl-font-weight-regular: 400 !default;
+
+/// Font weight for bold typography
+///
+/// @type Number
+/// @access public
+$kbrinl-font-weight-bold: 700 !default;

@@ -1,0 +1,61 @@
+////
+/// @group helpers
+////
+
+@import "../tools/exports";
+
+/// Font Face - Plus Jakarta
+///
+/// Outputs the font-face declaration for Source Sans Pro at the root of the CSS document
+/// the first time it is called.
+///
+/// @access private
+
+@mixin _kbrinl-font-face-plus-jakarta {
+  @include kbrinl-exports("kbrinl/helpers/font-faces") {
+    @at-root {
+      ///
+      /// Copyright © 2010 by Tokotype.
+      ///
+      /// This Font Software is licensed under the SIL Open Font License, Version 1.1.
+      @font-face {
+        font-display: fallback;
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: normal;
+        src:
+          kbrinl-font-url("PlusJakartaSans-Medium.woff") format("woff"),
+          kbrinl-font-url("PlusJakartaSans-Medium.woff2") format("woff2");
+      }
+      @font-face {
+        font-display: fallback;
+        font-family: "Plus Jakarta Sans";
+        font-style: italic;
+        font-weight: normal;
+        src:
+          kbrinl-font-url("PlusJakartaSans-MediumItalic.woff") format("woff"),
+          kbrinl-font-url("PlusJakartaSans-MediumItalic.woff2") format("woff2");
+      }
+      @font-face {
+        font-display: fallback;
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: bold;
+        src:
+          kbrinl-font-url("PlusJakartaSans-ExtraBold.woff") format("woff"),
+          kbrinl-font-url("PlusJakartaSans-ExtraBold.woff2") format("woff2");
+      }
+      @font-face {
+        font-display: fallback;
+        font-family: "Plus Jakarta Sans";
+        font-style: italic;
+        font-weight: bold;
+        src:
+          kbrinl-font-url("PlusJakartaSans-ExtraBoldItalic.woff")
+          format("woff"),
+          kbrinl-font-url("PlusJakartaSans-ExtraBoldItalic.woff2")
+          format("woff2");
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '../base';
+
+@include kbrinl-exports('kbrinl/objects/grid') {
+  .kbrinl-grid-row {
+    @include kbrinl-clearfix;
+    margin-right: - ($kbrinl-gutter-half);
+    margin-left: - ($kbrinl-gutter-half);
+  }
+
+  @each $width in map-keys($kbrinl-grid-widths) {
+    .kbrinl-grid-column-#{$width} {
+      @include kbrinl-grid-column($width);
+    }
+  }
+
+  // These *must* be defined in a separate loop as they have the same
+  // specificity as the non-breakpoint specific classes, so need to appear after
+  // them in the outputted CSS
+  @each $width in map-keys($kbrinl-grid-widths) {
+    .kbrinl-grid-column-#{$width}-from-desktop {
+      @include kbrinl-grid-column($width, $at: desktop);
+    }
+  }
+}

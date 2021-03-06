@@ -1,0 +1,42 @@
+@include kbrinl-exports('kbrinl/component/sub-navigation') {
+  $kbrinl-sub-navigation-item-border-color: kbrinl-colour('mid-grey');
+  $kbrinl-sub-navigation-item-y-padding: kbrinl-spacing(2);
+
+  .kbrinl-sub-navigation {
+    margin: -$kbrinl-sub-navigation-item-y-padding 0 kbrinl-spacing(4) 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .kbrinl-sub-navigation__item {
+    @include kbrinl-font($size: 16);
+
+    padding: $kbrinl-sub-navigation-item-y-padding 0;
+    border-bottom: 1px solid $kbrinl-sub-navigation-item-border-color;
+  }
+
+  .kbrinl-sub-navigation__link {
+    color: $kbrinl-link-colour;
+    text-decoration: none;
+
+    &:hover {
+      color: $kbrinl-link-hover-colour;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include kbrinl-focused-text;
+    }
+  }
+
+  .kbrinl-sub-navigation__item--active {
+    a {
+      &:link,
+      &:hover,
+      &:visited {
+        @include kbrinl-typography-weight-bold;
+        color: $kbrinl-text-colour;
+      }
+    }
+  }
+}

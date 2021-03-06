@@ -1,0 +1,48 @@
+@import '../base';
+
+// stylelint-disable declaration-no-important
+@include kbrinl-exports('kbrinl/overrides/width') {
+  .kbrinl-\!-width-full {
+    width: 100% !important;
+  }
+
+  .kbrinl-\!-width-three-quarters {
+    width: 100% !important;
+
+    @include kbrinl-media-query($from: tablet) {
+      width: 75% !important;
+    }
+  }
+
+  .kbrinl-\!-width-two-thirds {
+    width: 100% !important;
+
+    @include kbrinl-media-query($from: tablet) {
+      width: 66.66% !important;
+    }
+  }
+
+  .kbrinl-\!-width-one-half {
+    width: 100% !important;
+
+    @include kbrinl-media-query($from: tablet) {
+      width: 50% !important;
+    }
+  }
+
+  .kbrinl-\!-width-one-third {
+    width: 100% !important;
+
+    @include kbrinl-media-query($from: tablet) {
+      width: 33.33% !important;
+    }
+  }
+
+  .kbrinl-\!-width-one-quarter {
+    width: 100% !important;
+
+    @include kbrinl-media-query($from: tablet) {
+      width: 25% !important;
+    }
+  }
+}

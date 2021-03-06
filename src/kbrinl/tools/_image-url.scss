@@ -1,0 +1,26 @@
+
+////
+/// @group tools/assets
+////
+
+/// Image URL
+///
+/// If a custom image-url handler is defined ($kbrinl-image-url-function) then
+/// it will be called, otherwise a url will be returned with the filename
+/// appended to the image path.
+///
+/// @param {String} Filename for the image to load
+/// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
+
+@function kbrinl-image-url($filename) {
+  $use-custom-function: variable-exists('kbrinl-image-url-function')
+    and $kbrinl-image-url-function
+    and function-exists($kbrinl-image-url-function);
+
+  @if ($use-custom-function) {
+    @return call(get-function($kbrinl-image-url-function), $filename);
+  } @else {
+    @return url($kbrinl-images-path + $filename);
+  }
+}

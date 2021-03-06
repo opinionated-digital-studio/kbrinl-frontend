@@ -1,0 +1,34 @@
+{% from 'components/button/macro.njk' import kbrinlButton %}
+
+{%- set classNames = "kbrinl-jumbotron" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+<div class="{{ classNames }}">
+  <div class="kbrinl-width-container">
+    <div class="kbrinl-grid-row">
+      <div class="kbrinl-grid-column-two-thirds-from-desktop">
+        <h1 class="kbrinl-heading-xl kbrinl-jumbotron__heading">{{ params.heading }}</h1>
+        <p class="kbrinl-jumbotron__description">
+          {{ params.descriptionHtml | safe if params.descriptionHtml else params.descriptionText }}
+        </p>
+        {% if params.buttons %}
+        <div class="button-group">
+          {% for button in params.buttons %} 
+            {{ kbrinlButton({
+              element: 'a',
+              text: button.text,
+              html: button.html,
+              href: button.href | default('#'),
+              isStartButton: button.isStartButton,
+              classes: button.classes
+            }) }}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
