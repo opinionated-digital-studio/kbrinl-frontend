@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.2.5",
     "body-parser": "^1.19.0",
     "chokidar": "^3.5.1",
     "cssnano": "^4.1.10",
@@ -43,6 +44,7 @@
     "node-sass-package-importer": "^5.3.2",
     "nodemon": "^2.0.7",
     "nunjucks": "^3.2.3",
+    "postcss": "^8.2.7",
     "postcss-normalize": "^9.0.0",
     "stylelint": "^13.12.0",
     "stylelint-config-gds": "^0.1.0",

@@ -5,6 +5,7 @@ const sass = require('gulp-sass')
 const rename = require('gulp-rename')
 const postcss = require('gulp-postcss')
 const postcssNormalize = require('postcss-normalize')
+const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const rollup = require('gulp-better-rollup')
 const uglify = require('gulp-uglify')
@@ -46,9 +47,9 @@ gulp.task('scss:compile', () => {
     .pipe(sass({
       importer: packageImporter()
     }).on('error', sass.logError))
-    .pipe(rename(outputName))
     .pipe(postcss([
       postcssNormalize({ forceImport: true }),
+      autoprefixer(),
       cssnano
     ]))
     .pipe(rename({
