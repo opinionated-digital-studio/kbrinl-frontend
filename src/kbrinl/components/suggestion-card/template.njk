@@ -1,0 +1,14 @@
+{%- set classNames = "kbrinl-suggestion-card" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+<div class="{{ classNames }}">
+  <div class="kbrinl-suggestion-card__heading-container">
+    <h3 class="kbrinl-suggestion-card__heading">{{ params.heading }}</h3>
+  </div>
+  <div class="kbrinl-suggestion-card__content">
+      {{ params.html | safe if params.html else params.text }}
+  </div>
+</div>
