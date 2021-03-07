@@ -12,9 +12,10 @@
     "email": "mail@opinionated.nl"
   },
   "license": "MIT",
-    "keywords": [
+  "keywords": [
     "kbrinl",
     "frontend",
     "template"
-  ]
+  ],
+  "devDependencies": {}
 }
