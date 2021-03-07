@@ -9,7 +9,6 @@ echo "- publish the package if it has not been published already"
 echo "- check that there is not already a tag published"
 echo "- create a new tag"
 echo "- push the tag to remote origin"
-echo "- create a zip file of the 'dist/' directory locally"
 echo " "
 
 read -r -p "Do you want to continue? [y/N] " continue_prompt
@@ -47,8 +46,4 @@ else
     git tag $TAG -m "KBRINL Frontend release $TAG"
     git push --tags
     echo "🗒 Tag $TAG created and pushed to remote."
-
-    echo "🗒 Creating a release artifact..."
-    git archive -o ./release-$TAG.zip HEAD:dist
-    echo "🗒 Artifact created. Now create a release on GitHub and attach this."
 fi
