@@ -13,7 +13,6 @@ fi
 echo "Starting to build release..."
 echo " "
 echo "This will:"
-echo "- run the test suite"
 echo "- build KBRINL Frontend into the 'package/' directory"
 echo "- build KBRINL Frontend into the 'dist/' directory"
 echo "- commit all changes and push the branch to remote"
@@ -26,7 +25,6 @@ if [[ $continue_prompt != 'y' ]]; then
     exit 0
 fi
 
-npm run test
 npm run build
 npm run build:package
 
