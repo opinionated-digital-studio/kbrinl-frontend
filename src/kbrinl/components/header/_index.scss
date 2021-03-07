@@ -8,6 +8,7 @@
   $kbrinl-header-link-hover: kbrinl-colour('white');
   $kbrinl-header-link-active: $kbrinl-brand-colour;
   $kbrinl-header-nav-item-border-color: #2e3133;
+  $kbrinl-header-emblem-drop-shadow-color: kbrinl-shade($kbrinl-brand-colour, 40%);
 
   .kbrinl-header {
     @include kbrinl-font($size: 16);
@@ -142,6 +143,12 @@
     &:focus {
       margin-bottom: 0;
       border-bottom: 0;
+    }
+  }
+
+  .kbrinl-header__link--homepage:hover {
+    .kbrinl-header__logotype-bti {
+      filter: drop-shadow(1px 1px 0 $kbrinl-header-emblem-drop-shadow-color) drop-shadow(-1px 1px 0 $kbrinl-header-emblem-drop-shadow-color) drop-shadow(1px -1px 0 $kbrinl-header-emblem-drop-shadow-color) drop-shadow(-1px -1px 0 $kbrinl-header-emblem-drop-shadow-color);
     }
   }
 
