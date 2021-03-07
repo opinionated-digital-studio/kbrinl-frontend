@@ -1,6 +1,7 @@
 import Button from './components/button/button'
 import Checkboxes from './components/checkboxes/checkboxes'
 import Details from './components/details/details'
+import ErrorSummary from './components/error-summary/error-summary'
 import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import { nodeListForEach } from './common'
@@ -22,6 +23,10 @@ function initAll (options) {
   nodeListForEach($details, function ($detail) {
     new Details($detail).init()
   })
+
+  // Find first error summary module to enhance.
+  const $errorSummary = scope.querySelector('[data-module="kbrinl-error-summary"]')
+  new ErrorSummary($errorSummary).init()
 
   const $header = scope.querySelector('[data-module="kbrinl-header"]')
   new Header($header).init()
