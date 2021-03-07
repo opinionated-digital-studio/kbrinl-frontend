@@ -1,6 +1,6 @@
 {
   "name": "kbrinl-frontend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A code repository to help build web services for the Embassy of the Republic of Indonesia in The Hague.",
   "main": "kbrinl/all.js",
   "sass": "kbrinl/all.scss",
