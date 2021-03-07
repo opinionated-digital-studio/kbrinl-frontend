@@ -44,19 +44,6 @@ module.exports = (options) => {
         text: 'Components'
       }]
     }
-    res.locals.footer = {
-      heading: 'About this website',
-      navigation: [{
-        text: 'Privacy'
-      },
-      {
-        text: 'Disclaimer'
-      },
-      {
-        text: 'Colophon'
-      }]
-    }
-
     next()
   })
 
