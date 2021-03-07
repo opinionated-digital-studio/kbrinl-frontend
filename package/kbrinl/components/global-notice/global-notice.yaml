@@ -1,0 +1,55 @@
+params:
+  - name: title
+    type: string
+    required: true
+    description: A short descriptive title that adds context as to what the notice ais about. Not required if a titleHtml is supplied
+  - name: titleHtml
+    type: string
+    required: true
+    description: A short descriptive title adds context as to what the notice is about. Not required if a title in regular text format is supplied
+  - name: description
+    type: string
+    required: true
+    description: A very short summary about the event that the notice is about. Not required if a html is supplied
+  - name: descriptionHtml
+    type: string
+    required: true
+    description: A very short summary about the event that the notice is about. The html option allows you to extend the description part of the notice (i.e. add buttons). Not required if description in regular text format is suplied
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the notice.
+  - name: containerClasses
+    type: string
+    required: false
+    description: Specify if the notice should not be contained (as opposed to, for example, full width)
+
+examples:
+  - name: default
+    data:
+      title: Some grave situation
+      description: Due to some reason, it may take longer to process your application.
+  - name: with HTML title
+    data:
+      titleHtml: <strong class="kbrinl-tag kbrinl-!-margin-right-1">Beta</strong>
+      description: This is a test service
+  - name: with HTML description
+    data:
+      title: Some grave situation
+      descriptionHtml: <span class="kbrinl-global-notice__description">It may take longer to process your application. <a class="kbrinl-global-notice__link" href="#">More information</a></span>
+  - name: as high alert
+    data:
+      classes: kbrinl-global-notice--alert
+      title: Some grave situation
+      description: Due to some reason, it may take longer to process your application.
+  - name: as high with link
+    data:
+      classes: kbrinl-global-notice--alert
+      title: Some grave situation
+      descriptionHtml: <span class="kbrinl-global-notice__description">It may take longer to process your application. <a class="kbrinl-global-notice__link" href="#">More information</a></span>
+  - name: with white background
+    data:
+      classes: kbrinl-global-notice--white
+      titleHtml: <strong class="kbrinl-tag kbrinl-!-margin-right-1">Beta</strong>
+      descriptionHtml: <span class="kbrinl-global-notice__description">This is a test service. Your <a class="kbrinl-global-notice__link" href="#">feedback</a> will help us to improve it.</span>
+

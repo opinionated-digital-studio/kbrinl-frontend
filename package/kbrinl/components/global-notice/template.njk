@@ -1,0 +1,20 @@
+<div class="kbrinl-global-notice {{ params.classes if params.classes }}">
+  <div class="kbrinl-global-notice__container {{ params.containerClasses | default('kbrinl-width-container') }}">
+    {% if params.title %}
+      <strong class="kbrinl-global-notice__title">
+        {{ params.title }}:
+      </strong>
+    {% endif %}
+    {% if params.titleHtml %}
+      {{ params.titleHtml | safe }}
+    {% endif %}
+    {% if params.description %}
+      <span class="kbrinl-global-notice__description">
+        {{ params.description }}
+      </span>
+    {% endif %}
+    {% if params.descriptionHtml %}
+      {{ params.descriptionHtml | safe }}
+    {% endif %}
+  </div>
+</div>

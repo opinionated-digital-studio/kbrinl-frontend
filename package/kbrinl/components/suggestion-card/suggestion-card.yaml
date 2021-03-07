@@ -1,0 +1,64 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the suggestion card
+- name: heading
+  type: string
+  required: true
+  description: The heading for the card. Usually part of a conditional statement.
+- name: text
+  type: string
+  required: true
+  description: The content of the card. Will be ignored if HTML is supplied.
+- name: html
+  type: string
+  required: true
+  description: The HTML content of the card. Will take presedence over text which otherwise is required
+
+examples:
+- name: default
+  data:
+    heading: 'You need a tourist visa if:'
+    text: You are coming to Indonesia as a tourist
+- name: with HTML as content
+  data:
+    heading: 'You may not need a visa if:'
+    html: >
+      <ul class="kbrinl-list--bullet kbrinl-!-margin-top-0"><li>You are staying for no more than 30 days</li>
+      <li>You are a national of a country eligible for visa exemption</li>
+      <li>You are travelling for leisure, visiting family or friends or for other cultural purposes</li>
+      <li>You are planning a single visit trip only</li>
+      </ul>
+      For more information, read more about the <a class="kbrinl-link" href="#">visa exemptions</a>
+- name: with urgency
+  data:
+    classes: 'kbrinl-suggestion-card--urgent'
+    heading: 'You will need to be authorized if:'
+    html: >
+      <p class="kbrinl-!-margin-top-0">You are a national of one of the following countries:</p>
+      <ul class="kbrinl-list--bullet kbrinl-!-margin-top-0">
+      <li>Afghanistan</li>
+      <li>Cameroon</li>
+      <li>Guinea</li>
+      <li>Israel</li>
+      <li>Libya</li>
+      <li>Democratic People’s Republic of Korea</li>
+      <li>Nigeria</li>
+      <li>Somalia</li>
+      </ul>
+      For more information, read more about <a class="kbrinl-link" href="#">foreign nationals that need authorization</a>
+- name: with extreme urgency
+  data:
+    classes: 'kbrinl-suggestion-card--extremely-urgent'
+    heading: 'Cancel your appointment if:'
+    html: >
+      <p class="kbrinl-!-margin-top-0">You are showing one or more of the following symptoms:</p>
+      <ul class="kbrinl-list--bullet kbrinl-!-margin-top-0">
+      <li>a high temperature</li>
+      <li>a new, continuous cough</li>
+      <li>a loss of, or change to, your sense of smell or taste </li>
+      </ul>
+      Please cancel your appointment via the <a class="kbrinl-link" href="#">cancel appointment page</a>.
+
+

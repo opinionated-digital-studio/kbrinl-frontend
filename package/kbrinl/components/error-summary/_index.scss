@@ -1,0 +1,43 @@
+@import "../../core/lists";
+
+@include kbrinl-exports("kbrinl/component/error-summary") {
+  .kbrinl-error-summary {
+    @include kbrinl-text-colour;
+    @include kbrinl-responsive-padding(4);
+    @include kbrinl-responsive-margin(8, "bottom");
+
+    border: $kbrinl-border-width solid $kbrinl-error-colour;
+
+    &:focus {
+      outline: $kbrinl-focus-width solid $kbrinl-focus-colour;
+    }
+  }
+
+  .kbrinl-error-summary__title {
+    @include kbrinl-font($size: 24, $weight: bold);
+
+    margin-top: 0;
+    @include kbrinl-responsive-margin(4, "bottom");
+  }
+
+  .kbrinl-error-summary__body {
+    @include kbrinl-font($size: 19);
+
+    p {
+      margin-top: 0;
+      @include kbrinl-responsive-margin(4, "bottom");
+    }
+  }
+
+  // Cross-component class - adjusts styling of list component
+  .kbrinl-error-summary__list {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .kbrinl-error-summary__list a {
+    @include kbrinl-typography-weight-bold;
+    @include kbrinl-link-common;
+    @include kbrinl-link-style-error;
+  }
+}
