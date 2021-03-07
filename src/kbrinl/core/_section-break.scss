@@ -43,7 +43,8 @@
   // Visible variant
 
   %kbrinl-section-break--visible {
-    border-bottom: 1px solid $kbrinl-border-colour;
+    border-top: 1px solid $kbrinl-border-colour;
+    border-bottom: 0;
   }
 
   .kbrinl-section-break--visible {
