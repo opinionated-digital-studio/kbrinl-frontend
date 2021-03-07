@@ -7,6 +7,7 @@
 
   .kbrinl-suggestion-card__heading-container {
     padding: $kbrinl-suggestion-card-heading-y-padding $kbrinl-suggestion-card-heading-x-padding;
+    border-top: 1px solid kbrinl-colour('mid-grey');
     border-bottom: 1px solid kbrinl-colour('mid-grey');
     background-color: kbrinl-colour('light-grey');
   }
@@ -25,17 +26,7 @@
 
   .kbrinl-suggestion-card--urgent {
     .kbrinl-suggestion-card__heading-container {
-      background-color: $kbrinl-error-colour;
-    }
-
-    .kbrinl-suggestion-card__heading {
-      color: kbrinl-colour('white');
-    }
-  }
-
-  .kbrinl-suggestion-card--extremely-urgent {
-    .kbrinl-suggestion-card__heading-container {
-      border-bottom: 1px solid $kbrinl-suggestion-card-extremely-urgent-bg-colour;
+      border: none;
       background-color: $kbrinl-error-colour;
     }
 
@@ -44,7 +35,22 @@
     }
 
     .kbrinl-suggestion-card__content {
-      border-bottom: 1px solid $kbrinl-suggestion-card-extremely-urgent-bg-colour;
+      border: none;
+    }
+  }
+
+  .kbrinl-suggestion-card--extremely-urgent {
+    .kbrinl-suggestion-card__heading-container {
+      border: none;
+      background-color: $kbrinl-error-colour;
+    }
+
+    .kbrinl-suggestion-card__heading {
+      color: kbrinl-colour('white');
+    }
+
+    .kbrinl-suggestion-card__content {
+      border: none;
       color: kbrinl-colour('white');
       background-color: $kbrinl-suggestion-card-extremely-urgent-bg-colour;
     }
