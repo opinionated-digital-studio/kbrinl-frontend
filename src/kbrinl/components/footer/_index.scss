@@ -100,8 +100,8 @@
 
   .kbrinl-footer__inline-list {
 
-    @include kbrinl-responsive-padding(6, 'bottom');
-    @include kbrinl-responsive-margin(6, 'bottom');
+    padding-bottom: kbrinl-spacing(6);
+    margin-bottom: kbrinl-spacing(6);
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
