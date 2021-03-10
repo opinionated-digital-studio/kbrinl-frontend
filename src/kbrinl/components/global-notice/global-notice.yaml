@@ -31,7 +31,7 @@ examples:
       description: Due to some reason, it may take longer to process your application.
   - name: with HTML title
     data:
-      titleHtml: <strong class="kbrinl-tag kbrinl-!-margin-right-1">Beta</strong>
+      titleHtml: <strong class="kbrinl-tag kbrinl-!-margin-right-3">Beta</strong>
       description: This is a test service
   - name: with HTML description
     data:
@@ -50,6 +50,6 @@ examples:
   - name: with white background
     data:
       classes: kbrinl-global-notice--white
-      titleHtml: <strong class="kbrinl-tag kbrinl-!-margin-right-1">Beta</strong>
+      titleHtml: <strong class="kbrinl-tag kbrinl-!-margin-right-3">Beta</strong>
       descriptionHtml: <span class="kbrinl-global-notice__description">This is a test service. Your <a class="kbrinl-global-notice__link" href="#">feedback</a> will help us to improve it.</span>
 
