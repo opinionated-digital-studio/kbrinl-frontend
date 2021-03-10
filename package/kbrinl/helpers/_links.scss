@@ -229,6 +229,36 @@
   }
 }
 
+/// White link style mixin
+///
+/// Provides the link colour in white where there is no distinction between visited link
+/// and not yet visited links
+///
+
+@mixin kbrinl-link-style-white {
+  &:link {
+    color: kbrinl-colour('white');
+  }
+
+  &:visited {
+    color: kbrinl-colour('white');
+  }
+
+  &:hover {
+    color: kbrinl-shade(kbrinl-colour('white'), 40%);
+  }
+
+  &:active {
+    color: kbrinl-colour('white');
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $kbrinl-focus-text-colour;
+  }
+}
+
 /// Print friendly link mixin
 ///
 /// When printing, append the the destination URL to the link text, as long
